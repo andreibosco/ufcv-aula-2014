@@ -45,7 +45,6 @@
         var fontLarge = 20;
         var fontCookie = "UFCV-Aula-2014"
         var fontSize = fontMedium;
-
         // verifica se o cookie que armazena o tamanho da fonte já existe, do contrario o cria
         if ($.cookie(fontCookie)) {
           fontSize = $.cookie(fontCookie);
@@ -66,9 +65,9 @@
           $(".font.medium").addClass("current");
           $.cookie(fontCookie, fontSize);
         }
-
         // link da fonte grande
-        $(".font").bind("click", function(){
+        $(".font").bind("click", function(event){
+          event.preventDefault();
           if ($(this).hasClass("small")) {
             fontSize = fontSmall;
           }
@@ -78,11 +77,11 @@
           else {
             fontSize = fontLarge;
           }
-          $("#main").css("font-size", fontSize + "px");
+          $("#main").animate({"font-size": fontSize + "px"});
           $(".font").removeClass("current");
           $(this).addClass("current");
           $.cookie(fontCookie, fontSize);
-        })
+        });
       })
 
   %body
