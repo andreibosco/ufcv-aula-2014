@@ -1,5 +1,6 @@
 #sidebar {
   position: fixed;
+  z-index: 1;
   top: 0;
   left: -200px;
   width: 200px;
@@ -61,7 +62,7 @@
 .pure-menu.pure-menu-horizontal > ul {
   height: auto; }
 
-.navigation .sections {
+.navigation #sections {
   float: right; }
 .navigation .font.small span {
   font-size: 0.9em; }
@@ -82,3 +83,16 @@
   font-size: 2.0em; }
 .navigation .icon-arrow-right, .navigation .icon-arrow-left {
   font-size: 1.8em; }
+
+#main {
+  position: relative;
+  /*
+  section {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 500px;
+    //width: 100%;
+    vertical-align: top;
+  }
+  */ }

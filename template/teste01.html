@@ -8,13 +8,18 @@
     <link href='bower_components/pure/pure-min.css' rel='stylesheet'>
     <link href='css/font-icons.css' rel='stylesheet'>
     <link href='css/side-menu.css' rel='stylesheet'>
+    <link href='css/jquery.fullPage.css' rel='stylesheet'>
     <link href='css/custom.css' rel='stylesheet'>
     <script src='js/jquery-1.10.2.min.js'></script>
+    <script src='js/jquery-ui.min.js'></script>
     <script src='js/jquery.cookie.js'></script>
+    <script src='js/jquery.slimscroll.min.js'></script>
+    <script src='js/jquery.fullPage.js'></script>
     <script>
       $(document).ready(function(){
         // variáveis gerais
         var $sidebar = $("#sidebar");
+        var $window = $(window);
       
         // sidebar (menu)
         $(".pure-menu-heading").click(function(){
@@ -30,12 +35,14 @@
           }
         });
       
-        // seções
-        $("#main section").each(function(){
+        // botões de seções na barra de navegação
+        $("#main .slide").each(function(index){
+          // iniciando index em 1 (necessário para funcionar corretamente com o script fullPage)
+          index++;
           // obter o tipo de seção
           $sectionType = $(this).data("section-type");
           // criar item de navegação correspondente
-          $(".sections .previous").before("<li><a href='#'><span class=icon-"+$sectionType+"></span></a></li>" );
+          $("#sections .previous").before("<li data-slide-target='slide"+index+"'><a href='#/slide"+index+"'><span class='icon-"+$sectionType+"'></span></a></li>" );
         });
       
         // tamanho da fonte
@@ -81,6 +88,49 @@
           $(this).addClass("current");
           $.cookie(fontCookie, fontSize);
         });
+      
+        // slider das seções
+        $.fn.fullpage({
+          verticalCentered: false,
+          slidesNavigation: false,
+          scrollOverflow: true,
+          loopBottom: false,
+          loopTop: false,
+          loopHorizontal: false,
+          resize: false,
+          disableKeyboard: true,
+          afterRender: function() {
+            $("#sections li[data-slide-target=slide1]").addClass("current");
+            $(".controlArrow").hide();
+          },
+          afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {
+            // habilitando classe current apenas para o slide sendo exibido
+            $("#sections li").removeClass("current");
+            $("#sections li[data-slide-target="+slideAnchor+"]").addClass("current");
+          }
+        });
+      
+        //botões de avançar e voltar
+        $("#sections .previous").click(function(event){
+          event.preventDefault();
+          if ($(".section.active .slide.active").data('anchor') === "slide1") {
+            //TODO: criar e definir classe para exibir o botão como desabilitado
+          }
+          else {
+            $(".section.active").find(".controlArrow.prev").trigger("click");
+          }
+        })
+        $("#sections .next").click(function(event){
+          event.preventDefault();
+          var slidesTotal = $(".slide").size();
+          var lastSlide = "slide"+slidesTotal;
+          if ($(".section.active .slide.active").data('anchor') === lastSlide) {
+            //TODO: criar e definir classe para exibir o botão como desabilitado
+          }
+          else {
+            $(".section.active").find(".controlArrow.next").trigger("click");
+          }
+        });
       })
     </script>
   </head>
@@ -116,7 +166,7 @@
           </a>
         </li>
       </ul>
-      <ul class='sections'>
+      <ul id='sections'>
         <!-- as seções são adicionadas aqui automaticamente via javascript -->
         <li class='previous'>
           <a href='#'>
@@ -155,12 +205,15 @@
         </li>
       </ul>
     </div>
-    <div id='main'>
-      <section data-section-type='text'>
+    <div class='section' id='main'>
+      <div class='slide' data-anchor='slide1' data-section-type='text'>
         <div class='header'>
           <h1>Atendimento ao Cidadão</h1>
         </div>
         <div class='content'>
+          <p>
+            Felizmente, novos ventos estão soprando, graças especialmente ao surgimento desse novo modelo de gestão pública, em que, cada vez mais, aumenta a preocupação do servidor público em mudar essa imagem, surpreendendo o cidadão ao lhe oferecer um bom atendimento. E é para prestar esse bom atendimento ao cidadão, que são tidas como necessárias certas competências por parte do servidor público no desempenho de suas funções. Tais competências dizem respeito aos seus conhecimentos, suas habilidades e suas atitudes. Resta dizer, ainda, que o desenvolvimento e aplicação de tais competências, serão tanto melhor alcançados se envolvidos em um ambiente, onde reinem a motivação e o trabalho em equipe.
+          </p>
           <p>
             Felizmente, novos ventos estão soprando, graças especialmente ao surgimento desse novo modelo de gestão pública, em que, cada vez mais, aumenta a preocupação do servidor público em mudar essa imagem, surpreendendo o cidadão ao lhe oferecer um bom atendimento. E é para prestar esse bom atendimento ao cidadão, que são tidas como necessárias certas competências por parte do servidor público no desempenho de suas funções. Tais competências dizem respeito aos seus conhecimentos, suas habilidades e suas atitudes. Resta dizer, ainda, que o desenvolvimento e aplicação de tais competências, serão tanto melhor alcançados se envolvidos em um ambiente, onde reinem a motivação e o trabalho em equipe.
           </p>
@@ -187,27 +240,27 @@
             Como parte integrante da competência profissional, o conhecimento resulta de sua formação acadêmica, da teoria estudada, do processo cognitivo de interpretação das informações adquiridas ao longo do tempo, de forma a se saber o que deve ser feito e compreender as tarefas a serem realizadas. Além da educação formal, as experiências vivenciadas no trabalho, nos treinamentos e a interação com outras pessoas, também são importantes fontes de conhecimento.
           </p>
         </div>
-        <section data-section-type='video'>
-          <div class='header'>
-            <h1>Teste de Seção de Vídeo</h1>
-          </div>
-          <div class='content'>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
-            </p>
-          </div>
-        </section>
-        <section data-section-type='write'>
-          <div class='header'>
-            <h1>Teste de Seção de Exercício</h1>
-          </div>
-          <div class='content'>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
-            </p>
-          </div>
-        </section>
-      </section>
+      </div>
+      <div class='slide' data-anchor='slide2' data-section-type='video'>
+        <div class='header'>
+          <h1>Teste de Seção de Vídeo</h1>
+        </div>
+        <div class='content'>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
+          </p>
+        </div>
+      </div>
+      <div class='slide' data-anchor='slide3' data-section-type='write'>
+        <div class='header'>
+          <h1>Teste de Seção de Exercício</h1>
+        </div>
+        <div class='content'>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
+          </p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
