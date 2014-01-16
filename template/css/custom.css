@@ -63,6 +63,14 @@
 
 .navigation .sections {
   float: right; }
+.navigation .font.small span {
+  font-size: 0.9em; }
+.navigation .font.medium span {
+  font-size: 1.0em; }
+.navigation .font.large span {
+  font-size: 1.2em; }
+.navigation .font span {
+  vertical-align: text-bottom; }
 .navigation .current {
   background-color: white; }
   .navigation .current a {

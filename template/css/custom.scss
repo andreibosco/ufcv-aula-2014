@@ -102,6 +102,21 @@ $main-color: rgba(0, 84, 77, 1.0);
     float: right;
   }
 
+  .font {
+    &.small span{
+      font-size: 0.9em;
+    }
+    &.medium span{
+      font-size: 1.0em;
+    }
+    &.large span{
+      font-size: 1.2em;
+    }
+    span {
+      vertical-align: text-bottom;
+    }
+  }
+
   .current {
     background-color: rgb(255, 255, 255);
     a {
