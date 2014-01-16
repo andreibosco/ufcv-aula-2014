@@ -1,0 +1,72 @@
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: rgba(60, 108, 104, 0.95);
+  font-family: Helvetica, Verdana, sans-serif; }
+  #sidebar .info {
+    color: white; }
+    #sidebar .info h2, #sidebar .info ul {
+      margin: 0; }
+    #sidebar .info .name {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 0.5em 0.8em;
+      font-variant: small-caps;
+      text-align: center; }
+      #sidebar .info .name h2 {
+        font-weight: 200; }
+    #sidebar .info .authors {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 0.5em 0.8em;
+      list-style: none;
+      font-weight: 300;
+      font-size: 11pt; }
+      #sidebar .info .authors li {
+        padding: 0.2em 0; }
+  #sidebar .topics {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    #sidebar .topics a {
+      display: block;
+      width: 180px;
+      margin-top: 0.2em;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      color: white;
+      font-weight: 200;
+      font-size: 11pt; }
+    #sidebar .topics .current {
+      background-color: rgba(255, 255, 255, 0.3); }
+
+.pure-menu.pure-menu-open.pure-menu-fixed {
+  top: auto;
+  bottom: 0;
+  border-bottom-width: 0;
+  background-color: rgba(0, 84, 77, 0.9);
+  height: 3.0em; }
+  .pure-menu.pure-menu-open.pure-menu-fixed li a {
+    color: white;
+    line-height: 2.4em; }
+  .pure-menu.pure-menu-open.pure-menu-fixed > a {
+    color: white;
+    line-height: 2.8em; }
+  .pure-menu.pure-menu-open.pure-menu-fixed > a:hover, .pure-menu.pure-menu-open.pure-menu-fixed a:hover {
+    color: #00544d;
+    background-color: rgba(255, 255, 255, 0.8); }
+
+.pure-menu.pure-menu-horizontal > ul {
+  height: auto; }
+
+.navigation .sections {
+  float: right; }
+.navigation [class^="icon-"], .navigation [class*=" icon-"] {
+  font-size: 1.3em;
+  vertical-align: middle; }
+.navigation .icon-menu {
+  font-size: 2.0em; }
+.navigation .icon-arrow-right, .navigation .icon-arrow-left {
+  font-size: 1.8em; }

@@ -1,0 +1,113 @@
+// BARRA LATERAL DE INFORMAÇÃO E NAVEGAÇÃO ENTRE TÓPICOS (MENU)
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: rgba(60, 108, 104, 0.95);
+  font-family: Helvetica, Verdana, sans-serif;
+
+  .info {
+    color: white;
+
+    h2, ul {
+      margin: 0;
+    }
+
+    .name {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 0.5em 0.8em;
+      font-variant: small-caps;
+      text-align: center;
+
+      h2 {
+        font-weight: 200;
+      }
+    }
+
+    .authors {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 0.5em 0.8em;
+      list-style: none;
+      font-weight: 300;
+      font-size: 11pt;
+
+      li {
+        padding: 0.2em 0;
+      }
+    }
+  }
+
+  .topics {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    a {
+      display: block;
+      width: 200px - 20px; // TODO: usar variável
+      margin-top: 0.2em;
+      padding: 10px; // TODO: definir variável
+      background-color: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      color: white;
+      font-weight: 200;
+      font-size: 11pt;
+    }
+
+    .current {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// BARRA DE AÇÕES E NAVEGAÇÃO ENTRE SEÇÕES
+.pure-menu.pure-menu-open.pure-menu-fixed {
+  top: auto;
+  bottom: 0;
+  border-bottom-width: 0;
+  background-color: rgba(0, 84, 77, 0.9);
+  height: 3.0em;
+
+  li a {
+    color: white;
+    line-height: 2.4em;  
+  }
+
+  & > a {
+    color: white;
+    line-height: 2.8em;
+  }
+
+  & > a:hover, & a:hover {
+    color: rgb(0, 84, 77);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.pure-menu.pure-menu-horizontal > ul {
+  height: auto;
+}
+
+.navigation {
+
+  .sections {
+    float: right;
+  }
+
+  & [class^="icon-"], & [class*=" icon-"] {
+    font-size: 1.3em;
+    vertical-align: middle;
+  }
+
+  .icon-menu {
+    font-size: 2.0em;
+  }
+
+  & .icon-arrow-right, & .icon-arrow-left {
+    font-size: 1.8em;
+  }
+}
+
+
