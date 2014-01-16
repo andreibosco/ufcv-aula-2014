@@ -63,10 +63,10 @@
 
 .navigation .sections {
   float: right; }
-  .navigation .sections .current {
-    background-color: white; }
-    .navigation .sections .current a {
-      color: #00544d; }
+.navigation .current {
+  background-color: white; }
+  .navigation .current a {
+    color: #00544d !important; }
 .navigation [class^="icon-"], .navigation [class*=" icon-"] {
   font-size: 1.3em;
   vertical-align: middle; }

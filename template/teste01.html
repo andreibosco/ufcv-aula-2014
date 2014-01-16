@@ -10,6 +10,7 @@
     <link href='css/side-menu.css' rel='stylesheet'>
     <link href='css/custom.css' rel='stylesheet'>
     <script src='js/jquery-1.10.2.min.js'></script>
+    <script src='js/jquery.cookie.js'></script>
     <script>
       $(document).ready(function(){
         // variáveis gerais
@@ -33,9 +34,53 @@
         $("#main section").each(function(){
           // obter o tipo de seção
           $sectionType = $(this).data("section-type");
-          console.info($sectionType);
           // criar item de navegação correspondente
           $(".sections .previous").before("<li><a href='#'><span class=icon-"+$sectionType+"></span></a></li>" );
+        });
+      
+        // tamanho da fonte
+        var fontSmall = 12;
+        var fontMedium = 16;
+        var fontLarge = 20;
+        var fontCookie = "UFCV-Aula-2014"
+        var fontSize = fontMedium;
+      
+        // verifica se o cookie que armazena o tamanho da fonte já existe, do contrario o cria
+        if ($.cookie(fontCookie)) {
+          fontSize = $.cookie(fontCookie);
+          // define o tamanho inicial da fonte da página
+          $("#main").css("font-size", fontSize + "px");
+          // adiciona classe indicando qual o tamanho atual da fonte 
+          if (fontSize == fontSmall) {
+            $(".font.small").addClass("current");
+          }
+          else if (fontSize == fontMedium) {
+            $(".font.medium").addClass("current");
+          }
+          else {
+            $(".font.large").addClass("current");
+          }
+        }
+        else {
+          $(".font.medium").addClass("current");
+          $.cookie(fontCookie, fontSize);
+        }
+      
+        // link da fonte grande
+        $(".font").bind("click", function(){
+          if ($(this).hasClass("small")) {
+            fontSize = fontSmall;
+          }
+          else if ($(this).hasClass("medium")) {
+            fontSize = fontMedium;
+          }
+          else {
+            fontSize = fontLarge;
+          }
+          $("#main").css("font-size", fontSize + "px");
+          $(".font").removeClass("current");
+          $(this).addClass("current");
+          $.cookie(fontCookie, fontSize);
         })
       })
     </script>
@@ -56,7 +101,17 @@
             <span class='icon-print'></span>
           </a>
         </li>
-        <li>
+        <li class='font small'>
+          <a href='#'>
+            <span class='icon-text-size'></span>
+          </a>
+        </li>
+        <li class='font medium'>
+          <a href='#'>
+            <span class='icon-text-size'></span>
+          </a>
+        </li>
+        <li class='font large'>
           <a href='#'>
             <span class='icon-text-size'></span>
           </a>
