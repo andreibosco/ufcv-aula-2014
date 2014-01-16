@@ -1,9 +1,14 @@
+// VARIÁVEIS
+$sidebar-width: 200px;
+$sidebar-item-padding: 10px;
+
 // BARRA LATERAL DE INFORMAÇÃO E NAVEGAÇÃO ENTRE TÓPICOS (MENU)
 #sidebar {
+  //display: none;
   position: fixed;
   top: 0;
-  left: 0;
-  width: 200px;
+  left: -$sidebar-width;
+  width: $sidebar-width;
   height: 100%;
   background-color: rgba(60, 108, 104, 0.95);
   font-family: Helvetica, Verdana, sans-serif;
@@ -46,9 +51,9 @@
 
     a {
       display: block;
-      width: 200px - 20px; // TODO: usar variável
+      width: $sidebar-width - ($sidebar-item-padding * 2);
       margin-top: 0.2em;
-      padding: 10px; // TODO: definir variável
+      padding: $sidebar-item-padding;
       background-color: rgba(255, 255, 255, 0.1);
       text-decoration: none;
       color: white;

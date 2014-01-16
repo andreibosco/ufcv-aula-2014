@@ -12,8 +12,18 @@
     <script src='js/jquery-1.10.2.min.js'></script>
     <script>
       $(document).ready(function(){
+        var $sidebar = $("#sidebar");
         $(".pure-menu-heading").click(function(){
-          $("#sidebar").toggle();
+          var $sidebarOffset = $sidebar.offset();
+          if ($sidebarOffset.left < 0) {
+            $sidebar.animate({
+              left: "0px"
+            }, 300);
+          } else {
+            $sidebar.animate({
+              left: "-200px"
+            }, 300);
+          }
         })
       })
     </script>
@@ -99,36 +109,48 @@
       </ul>
     </div>
     <div id='main'>
-      <div class='header'>
-        <h1>Atendimento ao Cidadão</h1>
-      </div>
-      <div class='content'>
-        <p>
-          Felizmente, novos ventos estão soprando, graças especialmente ao surgimento desse novo modelo de gestão pública, em que, cada vez mais, aumenta a preocupação do servidor público em mudar essa imagem, surpreendendo o cidadão ao lhe oferecer um bom atendimento. E é para prestar esse bom atendimento ao cidadão, que são tidas como necessárias certas competências por parte do servidor público no desempenho de suas funções. Tais competências dizem respeito aos seus conhecimentos, suas habilidades e suas atitudes. Resta dizer, ainda, que o desenvolvimento e aplicação de tais competências, serão tanto melhor alcançados se envolvidos em um ambiente, onde reinem a motivação e o trabalho em equipe.
-        </p>
-        <div class='pure-g-r'>
-          <div class='pure-u-1-4'>
-            <img src='imgs/01.gif'>
-            <a href='http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg' target='blank'>Fonte</a>
-          </div>
-          <div class='pure-u-1-4'>
-            <img src='imgs/02.gif'>
-            <a href='http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg' target='blank'>Fonte</a>
-          </div>
-          <div class='pure-u-1-4'>
-            <img src='imgs/03.gif'>
-            <a href='http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg' target='blank'>Fonte</a>
-          </div>
-          <div class='pure-u-1-4'>
-            <img src='imgs/01.gif'>
-            <a href='http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg' target='blank'>Fonte</a>
-          </div>
+      <section class='text'>
+        <div class='header'>
+          <h1>Atendimento ao Cidadão</h1>
         </div>
-        <h2 class='content-subhead'>1.1 Conhecimento</h2>
-        <p>
-          Como parte integrante da competência profissional, o conhecimento resulta de sua formação acadêmica, da teoria estudada, do processo cognitivo de interpretação das informações adquiridas ao longo do tempo, de forma a se saber o que deve ser feito e compreender as tarefas a serem realizadas. Além da educação formal, as experiências vivenciadas no trabalho, nos treinamentos e a interação com outras pessoas, também são importantes fontes de conhecimento.
-        </p>
-      </div>
+        <div class='content'>
+          <p>
+            Felizmente, novos ventos estão soprando, graças especialmente ao surgimento desse novo modelo de gestão pública, em que, cada vez mais, aumenta a preocupação do servidor público em mudar essa imagem, surpreendendo o cidadão ao lhe oferecer um bom atendimento. E é para prestar esse bom atendimento ao cidadão, que são tidas como necessárias certas competências por parte do servidor público no desempenho de suas funções. Tais competências dizem respeito aos seus conhecimentos, suas habilidades e suas atitudes. Resta dizer, ainda, que o desenvolvimento e aplicação de tais competências, serão tanto melhor alcançados se envolvidos em um ambiente, onde reinem a motivação e o trabalho em equipe.
+          </p>
+          <div class='pure-g-r'>
+            <div class='pure-u-1-4'>
+              <img src='imgs/01.gif'>
+              <a href='http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg' target='blank'>Fonte</a>
+            </div>
+            <div class='pure-u-1-4'>
+              <img src='imgs/02.gif'>
+              <a href='http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg' target='blank'>Fonte</a>
+            </div>
+            <div class='pure-u-1-4'>
+              <img src='imgs/03.gif'>
+              <a href='http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg' target='blank'>Fonte</a>
+            </div>
+            <div class='pure-u-1-4'>
+              <img src='imgs/01.gif'>
+              <a href='http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg' target='blank'>Fonte</a>
+            </div>
+          </div>
+          <h2 class='content-subhead'>1.1 Conhecimento</h2>
+          <p>
+            Como parte integrante da competência profissional, o conhecimento resulta de sua formação acadêmica, da teoria estudada, do processo cognitivo de interpretação das informações adquiridas ao longo do tempo, de forma a se saber o que deve ser feito e compreender as tarefas a serem realizadas. Além da educação formal, as experiências vivenciadas no trabalho, nos treinamentos e a interação com outras pessoas, também são importantes fontes de conhecimento.
+          </p>
+        </div>
+        <section class='video'>
+          <div class='header'>
+            <h1>Teste de Seção de Vídeo</h1>
+          </div>
+          <div class='content'>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
+            </p>
+          </div>
+        </section>
+      </section>
     </div>
   </body>
 </html>
