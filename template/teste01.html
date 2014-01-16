@@ -12,7 +12,10 @@
     <script src='js/jquery-1.10.2.min.js'></script>
     <script>
       $(document).ready(function(){
+        // variáveis gerais
         var $sidebar = $("#sidebar");
+      
+        // sidebar (menu)
         $(".pure-menu-heading").click(function(){
           var $sidebarOffset = $sidebar.offset();
           if ($sidebarOffset.left < 0) {
@@ -24,6 +27,15 @@
               left: "-200px"
             }, 300);
           }
+        });
+      
+        // seções
+        $("#main section").each(function(){
+          // obter o tipo de seção
+          $sectionType = $(this).data("section-type");
+          console.info($sectionType);
+          // criar item de navegação correspondente
+          $(".sections .previous").before("<li><a href='#'><span class=icon-"+$sectionType+"></span></a></li>" );
         })
       })
     </script>
@@ -51,32 +63,12 @@
         </li>
       </ul>
       <ul class='sections'>
-        <li>
-          <a href='#'>
-            <span class='icon-text'></span>
-          </a>
-        </li>
-        <li>
-          <a href='#'>
-            <span class='icon-text'></span>
-          </a>
-        </li>
-        <li>
-          <a href='#'>
-            <span class='icon-movie'></span>
-          </a>
-        </li>
-        <li>
-          <a href='#'>
-            <span class='icon-write'></span>
-          </a>
-        </li>
-        <li>
+        <li class='previous'>
           <a href='#'>
             <span class='icon-arrow-left'></span>
           </a>
         </li>
-        <li>
+        <li class='next'>
           <a href='#'>
             <span class='icon-arrow-right'></span>
           </a>
@@ -109,7 +101,7 @@
       </ul>
     </div>
     <div id='main'>
-      <section class='text'>
+      <section data-section-type='text'>
         <div class='header'>
           <h1>Atendimento ao Cidadão</h1>
         </div>
@@ -140,9 +132,19 @@
             Como parte integrante da competência profissional, o conhecimento resulta de sua formação acadêmica, da teoria estudada, do processo cognitivo de interpretação das informações adquiridas ao longo do tempo, de forma a se saber o que deve ser feito e compreender as tarefas a serem realizadas. Além da educação formal, as experiências vivenciadas no trabalho, nos treinamentos e a interação com outras pessoas, também são importantes fontes de conhecimento.
           </p>
         </div>
-        <section class='video'>
+        <section data-section-type='video'>
           <div class='header'>
             <h1>Teste de Seção de Vídeo</h1>
+          </div>
+          <div class='content'>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
+            </p>
+          </div>
+        </section>
+        <section data-section-type='write'>
+          <div class='header'>
+            <h1>Teste de Seção de Exercício</h1>
           </div>
           <div class='content'>
             <p>

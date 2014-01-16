@@ -13,7 +13,10 @@
 
     :javascript
       $(document).ready(function(){
+        // variáveis gerais
         var $sidebar = $("#sidebar");
+
+        // sidebar (menu)
         $(".pure-menu-heading").click(function(){
           var $sidebarOffset = $sidebar.offset();
           if ($sidebarOffset.left < 0) {
@@ -25,6 +28,15 @@
               left: "-200px"
             }, 300);
           }
+        });
+
+        // seções
+        $("#main section").each(function(){
+          // obter o tipo de seção
+          $sectionType = $(this).data("section-type");
+          console.info($sectionType);
+          // criar item de navegação correspondente
+          $(".sections .previous").before("<li><a href='#'><span class=icon-"+$sectionType+"></span></a></li>" );
         })
       })
 
@@ -43,22 +55,10 @@
           %a{:href => '#'}
             %span.icon-text-size
       %ul.sections
-        %li
-          %a{:href => '#'}
-            %span.icon-text
-        %li
-          %a{:href => '#'}
-            %span.icon-text
-        %li
-          %a{:href => '#'}
-            %span.icon-movie
-        %li
-          %a{:href => '#'}
-            %span.icon-write
-        %li 
+        %li.previous 
           %a{:href => '#'}
             %span.icon-arrow-left
-        %li 
+        %li.next
           %a{:href => '#'}
             %span.icon-arrow-right
     #sidebar
@@ -78,7 +78,7 @@
         %li
           %a{:href => '#'} Tópico 04
     #main
-      %section.text
+      %section{:data => {:section_type => 'text'}}
         .header
           %h1 Atendimento ao Cidadão
         .content
@@ -100,9 +100,15 @@
           %h2.content-subhead 1.1 Conhecimento
           %p
             Como parte integrante da competência profissional, o conhecimento resulta de sua formação acadêmica, da teoria estudada, do processo cognitivo de interpretação das informações adquiridas ao longo do tempo, de forma a se saber o que deve ser feito e compreender as tarefas a serem realizadas. Além da educação formal, as experiências vivenciadas no trabalho, nos treinamentos e a interação com outras pessoas, também são importantes fontes de conhecimento.
-        %section.video
+        %section{:data => {:section_type => 'video'}}
           .header
             %h1 Teste de Seção de Vídeo
+          .content
+            %p
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
+        %section{:data => {:section_type => 'write'}}
+          .header
+            %h1 Teste de Seção de Exercício
           .content
             %p
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.

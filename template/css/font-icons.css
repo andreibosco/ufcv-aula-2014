@@ -23,7 +23,7 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-movie:before {
+.icon-video:before {
 	content: "\e600";
 }
 .icon-print:before {
