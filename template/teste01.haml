@@ -43,7 +43,7 @@
           // obter o tipo de seção
           $sectionType = $(this).data("section-type");
           // criar item de navegação correspondente
-          $("#sections .previous").before("<li data-slide-target='slide"+index+"'><a href='#/slide"+index+"'><span class='icon-"+$sectionType+"'></span></a></li>" );
+          $("#subsidebar .list").append("<li data-slide-target='slide"+index+"'><a href='#/slide"+index+"'><span class='icon-"+$sectionType+"'></span></a></li>" );
         });
 
         // tamanho da fonte
@@ -101,23 +101,33 @@
           resize: false,
           disableKeyboard: true,
           afterRender: function() {
-            $("#sections li[data-slide-target=slide1]").addClass("current");
+            $("#subsidebar li[data-slide-target=slide1]").addClass("current");
             $(".controlArrow").hide();
+            $("#sections .previous").addClass('disabled');
           },
           afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {
             // habilitando classe current apenas para o slide sendo exibido
-            $("#sections li").removeClass("current");
-            $("#sections li[data-slide-target="+slideAnchor+"]").addClass("current");
+            $("#subsidebar li").removeClass("current");
+            $("#subsidebar li[data-slide-target="+slideAnchor+"]").addClass("current");
+            // adicionando classe disable nas setas de navegação ao chegar no início ou fim
+            var slidesTotal = $(".slide").size();
+            var lastSlide = "slide"+slidesTotal;
+            if (slideIndex == 0) {
+              $("#sections .previous").addClass('disabled');
+            }
+            else if (slideIndex == slidesTotal-1) {
+              $("#sections .next").addClass('disabled');
+            }
+            else {
+              $("#sections .previous, #sections .next").removeClass("disabled");
+            }
           }
         });
 
-        //botões de avançar e voltar
+        //botões de avançar e voltar e desabilitando ao chegar no primeiro ou último slide
         $("#sections .previous").click(function(event){
           event.preventDefault();
-          if ($(".section.active .slide.active").data('anchor') === "slide1") {
-            //TODO: criar e definir classe para exibir o botão como desabilitado
-          }
-          else {
+          if ($(".section.active .slide.active").data('anchor') != "slide1") {
             $(".section.active").find(".controlArrow.prev").trigger("click");
           }
         })
@@ -125,10 +135,7 @@
           event.preventDefault();
           var slidesTotal = $(".slide").size();
           var lastSlide = "slide"+slidesTotal;
-          if ($(".section.active .slide.active").data('anchor') === lastSlide) {
-            //TODO: criar e definir classe para exibir o botão como desabilitado
-          }
-          else {
+          if ($(".section.active .slide.active").data('anchor') != lastSlide) {
             $(".section.active").find(".controlArrow.next").trigger("click");
           }
         });
@@ -162,6 +169,13 @@
         %li.next
           %a{:href => '#'}
             %span.icon-arrow-right
+        %li.font.large
+          %a{:href => '#'}
+            %span.icon-text-size
+            / TODO: substituir o ícone
+    #subsidebar
+      %ul.list
+        / as seções são adicionadas aqui automaticamente via javascript
     #sidebar
       .info
         .name
