@@ -98,6 +98,7 @@ $main-color: rgba(0, 84, 77, 1.0);
 }
 
 .navigation {
+  z-index: 100 !important;
 
   .pure-menu-heading {
     width: 20px;
@@ -122,7 +123,7 @@ $main-color: rgba(0, 84, 77, 1.0);
         width: 20px;
 
         span {
-          margin-left: -6px;
+          margin-left: -4px;
         }
       }
     }

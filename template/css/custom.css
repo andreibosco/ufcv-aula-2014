@@ -62,40 +62,42 @@
 .pure-menu.pure-menu-horizontal > ul {
   height: auto; }
 
-.navigation .pure-menu-heading {
-  width: 20px; }
-  .navigation .pure-menu-heading span {
-    margin-left: -4px; }
-.navigation li {
-  width: 60px;
-  margin-right: -5px; }
-.navigation #sections {
-  float: right; }
-  .navigation #sections li {
-    margin-right: 0px; }
-    .navigation #sections li.previous a, .navigation #sections li.next a {
-      width: 20px; }
-      .navigation #sections li.previous a span, .navigation #sections li.next a span {
-        margin-left: -6px; }
-.navigation .font.small span {
-  font-size: 0.9em; }
-.navigation .font.medium span {
-  font-size: 1.0em; }
-.navigation .font.large span {
-  font-size: 1.2em; }
-.navigation .font span {
-  vertical-align: text-bottom; }
-.navigation .current {
-  background-color: white; }
-  .navigation .current a {
-    color: #00544d !important; }
-.navigation [class^="icon-"], .navigation [class*=" icon-"] {
-  font-size: 1.3em;
-  vertical-align: middle; }
-.navigation .icon-menu {
-  font-size: 2.0em; }
-.navigation .icon-arrow-right, .navigation .icon-arrow-left {
-  font-size: 1.8em; }
+.navigation {
+  z-index: 100 !important; }
+  .navigation .pure-menu-heading {
+    width: 20px; }
+    .navigation .pure-menu-heading span {
+      margin-left: -4px; }
+  .navigation li {
+    width: 60px;
+    margin-right: -5px; }
+  .navigation #sections {
+    float: right; }
+    .navigation #sections li {
+      margin-right: 0px; }
+      .navigation #sections li.previous a, .navigation #sections li.next a {
+        width: 20px; }
+        .navigation #sections li.previous a span, .navigation #sections li.next a span {
+          margin-left: -4px; }
+  .navigation .font.small span {
+    font-size: 0.9em; }
+  .navigation .font.medium span {
+    font-size: 1.0em; }
+  .navigation .font.large span {
+    font-size: 1.2em; }
+  .navigation .font span {
+    vertical-align: text-bottom; }
+  .navigation .current {
+    background-color: white; }
+    .navigation .current a {
+      color: #00544d !important; }
+  .navigation [class^="icon-"], .navigation [class*=" icon-"] {
+    font-size: 1.3em;
+    vertical-align: middle; }
+  .navigation .icon-menu {
+    font-size: 2.0em; }
+  .navigation .icon-arrow-right, .navigation .icon-arrow-left {
+    font-size: 1.8em; }
 
 #main {
   position: relative;
