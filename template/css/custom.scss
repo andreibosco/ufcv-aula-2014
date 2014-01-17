@@ -145,7 +145,7 @@ $subsidebar-width: $button-width;
   height: auto;
 }
 
-.navigation {
+#toolbar {
   z-index: 105 !important;
 
   .pure-menu-heading {
@@ -161,7 +161,7 @@ $subsidebar-width: $button-width;
     margin-right: -5px;
   }
 
-  #sections {
+  #navigation {
     float: right;
 
     li {

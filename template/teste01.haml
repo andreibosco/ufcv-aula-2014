@@ -119,7 +119,7 @@
           afterRender: function() {
             $("#subsidebar li[data-slide-target=slide1]").addClass("current");
             $(".controlArrow").hide();
-            $("#sections .previous").addClass('disabled');
+            $("#navigation .previous").addClass('disabled');
           },
           afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {
             // habilitando classe current apenas para o slide sendo exibido
@@ -129,25 +129,25 @@
             var slidesTotal = $(".slide").size();
             var lastSlide = "slide"+slidesTotal;
             if (slideIndex == 0) {
-              $("#sections .previous").addClass('disabled');
+              $("#navigation .previous").addClass('disabled');
             }
             else if (slideIndex == slidesTotal-1) {
-              $("#sections .next").addClass('disabled');
+              $("#navigation .next").addClass('disabled');
             }
             else {
-              $("#sections .previous, #sections .next").removeClass("disabled");
+              $("#navigation .previous, #navigation .next").removeClass("disabled");
             }
           }
         });
 
         //botões de avançar e voltar e desabilitando ao chegar no primeiro ou último slide
-        $("#sections .previous").click(function(event){
+        $("#navigation .previous").click(function(event){
           event.preventDefault();
           if ($(".section.active .slide.active").data('anchor') != "slide1") {
             $(".section.active").find(".controlArrow.prev").trigger("click");
           }
         })
-        $("#sections .next").click(function(event){
+        $("#navigation .next").click(function(event){
           event.preventDefault();
           var slidesTotal = $(".slide").size();
           var lastSlide = "slide"+slidesTotal;
@@ -158,7 +158,7 @@
       })
 
   %body
-    .pure-menu.pure-menu-open.pure-menu-fixed.pure-menu-horizontal.navigation
+    .pure-menu.pure-menu-open.pure-menu-fixed.pure-menu-horizontal#toolbar
       %a.pure-menu-heading{:href => '#'}
         %span.icon-menu
       %ul.actions
@@ -177,8 +177,8 @@
         %li.font.large
           %a{:href => '#'}
             %span.icon-text-size
-      / TODO: renomear #sections já que os botões de seções não ficam mais aqui
-      %ul#sections
+      / TODO: renomear #navigation já que os botões de seções não ficam mais aqui
+      %ul#navigation
         / as seções são adicionadas aqui automaticamente via javascript
         %li.previous 
           %a{:href => '#'}

@@ -93,47 +93,47 @@
 .pure-menu.pure-menu-horizontal > ul {
   height: auto; }
 
-.navigation {
+#toolbar {
   z-index: 105 !important; }
-  .navigation .pure-menu-heading {
+  #toolbar .pure-menu-heading {
     width: 20px; }
-    .navigation .pure-menu-heading span {
+    #toolbar .pure-menu-heading span {
       margin-left: -4px; }
-  .navigation li {
+  #toolbar li {
     width: 60px;
     margin-right: -5px; }
-  .navigation #sections {
+  #toolbar #navigation {
     float: right; }
-    .navigation #sections li {
+    #toolbar #navigation li {
       margin-right: 0px; }
-      .navigation #sections li.previous a, .navigation #sections li.next a {
+      #toolbar #navigation li.previous a, #toolbar #navigation li.next a {
         width: 20px; }
-        .navigation #sections li.previous a span, .navigation #sections li.next a span {
+        #toolbar #navigation li.previous a span, #toolbar #navigation li.next a span {
           margin-left: -4px; }
-      .navigation #sections li.disabled {
+      #toolbar #navigation li.disabled {
         opacity: 0.5; }
-        .navigation #sections li.disabled a:hover {
+        #toolbar #navigation li.disabled a:hover {
           background-color: transparent;
           cursor: default;
           color: white; }
-  .navigation .font.small span {
+  #toolbar .font.small span {
     font-size: 0.9em; }
-  .navigation .font.medium span {
+  #toolbar .font.medium span {
     font-size: 1.0em; }
-  .navigation .font.large span {
+  #toolbar .font.large span {
     font-size: 1.2em; }
-  .navigation .font span {
+  #toolbar .font span {
     vertical-align: text-bottom; }
-  .navigation .current {
+  #toolbar .current {
     background-color: white; }
-    .navigation .current a {
+    #toolbar .current a {
       color: #00544d !important; }
-  .navigation [class^="icon-"], .navigation [class*=" icon-"] {
+  #toolbar [class^="icon-"], #toolbar [class*=" icon-"] {
     font-size: 1.3em;
     vertical-align: middle; }
-  .navigation .icon-menu {
+  #toolbar .icon-menu {
     font-size: 2.0em; }
-  .navigation .icon-arrow-right, .navigation .icon-arrow-left {
+  #toolbar .icon-arrow-right, #toolbar .icon-arrow-left {
     font-size: 1.8em; }
 
 #main {
