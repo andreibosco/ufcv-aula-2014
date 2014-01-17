@@ -2,6 +2,8 @@
 $sidebar-width: 185px;
 $sidebar-item-padding: 10px;
 $main-color: rgba(0, 84, 77, 1.0);
+$button-width: 60px;
+$subsidebar-width: $button-width;
 
 // BARRA LATERAL DE INFORMAÇÃO E NAVEGAÇÃO ENTRE TÓPICOS (MENU)
 #sidebar {
@@ -73,8 +75,8 @@ $main-color: rgba(0, 84, 77, 1.0);
   z-index: 100;
   position: absolute;
   top: 0;
-  right: 0;
-  width: 60px;
+  right: -$subsidebar-width;
+  width: $subsidebar-width;
   height: 100%;
   background-color: transparentize($main-color, 0.1);
 
@@ -155,7 +157,7 @@ $main-color: rgba(0, 84, 77, 1.0);
   }
 
   li {
-    width: 60px;
+    width: $button-width;
     margin-right: -5px;
   }
 

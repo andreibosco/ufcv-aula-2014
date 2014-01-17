@@ -20,6 +20,7 @@
       $(document).ready(function(){
         // variáveis gerais
         var $sidebar = $("#sidebar");
+        var $subsidebar = $("#subsidebar");
         var $window = $(window);
 
         // sidebar (menu)
@@ -31,10 +32,25 @@
             }, 300);
           } else {
             $sidebar.animate({
-              left: "-200px"
+              left: "-"+$sidebar.width()
             }, 300);
           }
         });
+
+        // subsidebar (slides)
+        $("#submenu a").click(function(event){
+          event.preventDefault();
+          var $subsidebarOffset = $subsidebar.offset();
+          if ($subsidebarOffset.left == $window.width()) {
+            $subsidebar.animate({
+              right: "0px"
+            }, 300);
+          } else {
+            $subsidebar.animate({
+              right: "-"+$subsidebar.width()
+            }, 300);
+          }
+        })
 
         // botões de seções na barra de navegação
         $("#main .slide").each(function(index){
@@ -161,6 +177,7 @@
         %li.font.large
           %a{:href => '#'}
             %span.icon-text-size
+      / TODO: renomear #sections já que os botões de seções não ficam mais aqui
       %ul#sections
         / as seções são adicionadas aqui automaticamente via javascript
         %li.previous 
@@ -169,7 +186,7 @@
         %li.next
           %a{:href => '#'}
             %span.icon-arrow-right
-        %li.font.large
+        %li#submenu
           %a{:href => '#'}
             %span.icon-text-size
             / TODO: substituir o ícone
