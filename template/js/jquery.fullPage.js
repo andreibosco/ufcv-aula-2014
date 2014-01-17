@@ -35,6 +35,7 @@
 			'fixedElements': null,
 			'normalScrollElements': null,
 			'disableKeyboard': false,
+			'touch': true,
 
 			//events
 			'afterLoad': null,
@@ -327,80 +328,81 @@
 		* This way, the touchstart and the touch moves shows an small difference between them which is the
 		* used one to determine the direction.
 		*/
-		$(document).on('touchmove MSPointerMove', function(event){
-			if(options.autoScrolling){
-				//preventing the easing on iOS devices
-				event.preventDefault();
-				var e = event.originalEvent;
-				var touchMoved = false;
-				var activeSection = $('.section.active');
-				var scrollable;
+		if(options.touch){
+			$(document).on('touchmove MSPointerMove', function(event){
+				if(options.autoScrolling){
+					//preventing the easing on iOS devices
+					event.preventDefault();
+					var e = event.originalEvent;
+					var touchMoved = false;
+					var activeSection = $('.section.active');
+					var scrollable;
 
-				if (!isMoving && !slideMoving) { //if theres any #
-				
-					touchEndY = e.touches[0].pageY;
-					touchEndX = e.touches[0].pageX;
+					if (!isMoving && !slideMoving) { //if theres any #
 					
-					
-					//if movement in the X axys is bigger than in the Y and the currect section has slides...
-					if(activeSection.find('.slides').length && Math.abs(touchStartX - touchEndX) > (Math.abs(touchStartY - touchEndY))){
-						if(touchStartX > touchEndX){
-							activeSection.find('.controlArrow.next').trigger('click');
-						}
-						else if(touchStartX < touchEndX){
-							activeSection.find('.controlArrow.prev').trigger('click');
-						}
-					}
-					//vertical scrolling
-					else{
-						//if there are landscape slides, we check if the scrolling bar is in the current one or not
-						if(activeSection.find('.slides').length){
-							scrollable= activeSection.find('.slide.active').find('.scrollable');
-						}else{
-							scrollable = activeSection.find('.scrollable');
-						}
-				
-						if(touchStartY > touchEndY){
-							if(scrollable.length > 0 ){
-								//is the scrollbar at the end of the scroll?
-								if(isScrolled('bottom', scrollable)){
-									$.fn.fullpage.moveSectionDown();
-								}else{
-									return true;
-								}
-							}else{
-								// moved down
-								$.fn.fullpage.moveSectionDown();
-							}
-						} else {
+						touchEndY = e.touches[0].pageY;
+						touchEndX = e.touches[0].pageX;
 						
-							if(scrollable.length > 0){
-								//is the scrollbar at the start of the scroll?
-								if(isScrolled('top', scrollable)){
+						
+						//if movement in the X axys is bigger than in the Y and the currect section has slides...
+						if(activeSection.find('.slides').length && Math.abs(touchStartX - touchEndX) > (Math.abs(touchStartY - touchEndY))){
+							if(touchStartX > touchEndX){
+								activeSection.find('.controlArrow.next').trigger('click');
+							}
+							else if(touchStartX < touchEndX){
+								activeSection.find('.controlArrow.prev').trigger('click');
+							}
+						}
+						//vertical scrolling
+						else{
+							//if there are landscape slides, we check if the scrolling bar is in the current one or not
+							if(activeSection.find('.slides').length){
+								scrollable= activeSection.find('.slide.active').find('.scrollable');
+							}else{
+								scrollable = activeSection.find('.scrollable');
+							}
+					
+							if(touchStartY > touchEndY){
+								if(scrollable.length > 0 ){
+									//is the scrollbar at the end of the scroll?
+									if(isScrolled('bottom', scrollable)){
+										$.fn.fullpage.moveSectionDown();
+									}else{
+										return true;
+									}
+								}else{
+									// moved down
+									$.fn.fullpage.moveSectionDown();
+								}
+							} else {
+							
+								if(scrollable.length > 0){
+									//is the scrollbar at the start of the scroll?
+									if(isScrolled('top', scrollable)){
+										$.fn.fullpage.moveSectionUp();
+									}
+									else{
+										return true;
+									}
+								}else{
+									// moved up
 									$.fn.fullpage.moveSectionUp();
 								}
-								else{
-									return true;
-								}
-							}else{
-								// moved up
-								$.fn.fullpage.moveSectionUp();
 							}
-						}
-					}					
+						}					
+					}
 				}
-			}
-		});
-		
-		$(document).on('touchstart MSPointerDown', function(event){
+			});
 			
-			if(options.autoScrolling){
-				var e = event.originalEvent;
-				touchStartY = e.touches[0].pageY;
-				touchStartX = e.touches[0].pageX;
-			}
-		});
-		
+			$(document).on('touchstart MSPointerDown', function(event){
+				
+				if(options.autoScrolling){
+					var e = event.originalEvent;
+					touchStartY = e.touches[0].pageY;
+					touchStartX = e.touches[0].pageX;
+				}
+			});
+		}
 
 
 		/**

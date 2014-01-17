@@ -17,6 +17,11 @@
     %script{:src => 'js/jquery.fullPage.js'}
 
     :javascript
+      (function($) {
+          $.fn.hasScrollBar = function() {
+              return this.get(0).scrollHeight > this.innerHeight();
+          }
+      })(jQuery);
       $(document).ready(function(){
         // variáveis gerais
         var $sidebar = $("#sidebar");
@@ -116,6 +121,7 @@
           loopHorizontal: false,
           resize: false,
           disableKeyboard: true,
+          touch: false,
           afterRender: function() {
             $("#subsidebar li[data-slide-target=slide1]").addClass("current");
             $(".controlArrow").hide();
@@ -155,7 +161,27 @@
             $(".section.active").find(".controlArrow.next").trigger("click");
           }
         });
-      })
+
+        // temp
+        var $sidebarHeight = $window.height() - $("#navigation").height() + 2;
+        $("#sidebar").css("height",$sidebarHeight);
+        $("#subsidebar").css("height",$sidebarHeight);
+      });
+
+      $(window).resize(function(){
+        var $sidebar = $("#sidebar");
+        var $subsidebar = $("#subsidebar");
+        var $window = $(window);
+        var $sidebarHeight = $window.height() - $("#navigation").height() + 2;
+        console.info($sidebarHeight);
+        $("#sidebar, #subsidebar").css("height",$sidebarHeight);
+        $("#subsidebar, #subsidebar").css("height",$sidebarHeight);
+        if ($("#subsidebar").hasScrollBar()) {
+          $("#subsidebar").css("width","70px");
+        } else {
+          $("#subsidebar").css("width","60px");
+        }
+      });
 
   %body
     .pure-menu.pure-menu-open.pure-menu-fixed.pure-menu-horizontal#toolbar
@@ -193,6 +219,54 @@
     #subsidebar
       %ul.list
         / as seções são adicionadas aqui automaticamente via javascript
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
     #sidebar
       .info
         .name
@@ -209,6 +283,30 @@
           %a{:href => '#'} Tópico 03
         %li
           %a{:href => '#'} Tópico 04
+        %li
+          %a{:href => '#'} Tópico 05
+        %li
+          %a{:href => '#'} Tópico 06
+        %li
+          %a{:href => '#'} Tópico 07
+        %li
+          %a{:href => '#'} Tópico 08
+        %li
+          %a{:href => '#'} Tópico 09
+        %li
+          %a{:href => '#'} Tópico 10
+        %li
+          %a{:href => '#'} Tópico 04
+        %li
+          %a{:href => '#'} Tópico 02
+        %li
+          %a{:href => '#'} Tópico 03
+        %li
+          %a{:href => '#'} Tópico 05
+        %li
+          %a{:href => '#'} Tópico 06
+        %li
+          %a{:href => '#'} Tópico 07
     #main.section
       .slide{:data => {:section_type => 'text', :anchor => 'slide1'}}
         .header

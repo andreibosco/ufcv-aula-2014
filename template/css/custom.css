@@ -5,6 +5,9 @@
   left: -185px;
   width: 185px;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background-color: rgba(60, 108, 104, 0.95);
   font-family: Helvetica, Verdana, sans-serif; }
   #sidebar .info {
@@ -50,6 +53,9 @@
   right: -60px;
   width: 60px;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background-color: rgba(0, 84, 77, 0.9); }
   #subsidebar [class^="icon-"], #subsidebar [class*=" icon-"] {
     font-size: 1.3em;
@@ -66,7 +72,7 @@
       color: white;
       line-height: 2.4em;
       height: 30px; }
-    #subsidebar ul li a:hover {
+    #subsidebar ul li a:hover, #subsidebar ul li a:focus {
       background-color: rgba(255, 255, 255, 0.8);
       color: #00544d; }
     #subsidebar ul li.current {
@@ -86,7 +92,7 @@
   .pure-menu.pure-menu-open.pure-menu-fixed > a {
     color: white;
     line-height: 2.8em; }
-  .pure-menu.pure-menu-open.pure-menu-fixed > a:hover, .pure-menu.pure-menu-open.pure-menu-fixed a:hover {
+  .pure-menu.pure-menu-open.pure-menu-fixed a:hover, .pure-menu.pure-menu-open.pure-menu-fixed a:focus {
     color: #00544d;
     background-color: rgba(255, 255, 255, 0.8); }
 
@@ -112,7 +118,7 @@
           margin-left: -4px; }
       #toolbar #navigation li.disabled {
         opacity: 0.5; }
-        #toolbar #navigation li.disabled a:hover {
+        #toolbar #navigation li.disabled a:hover, #toolbar #navigation li.disabled a:focus {
           background-color: transparent;
           cursor: default;
           color: white; }

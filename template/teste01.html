@@ -16,6 +16,11 @@
     <script src='js/jquery.slimscroll.min.js'></script>
     <script src='js/jquery.fullPage.js'></script>
     <script>
+      (function($) {
+          $.fn.hasScrollBar = function() {
+              return this.get(0).scrollHeight > this.innerHeight();
+          }
+      })(jQuery);
       $(document).ready(function(){
         // variáveis gerais
         var $sidebar = $("#sidebar");
@@ -115,6 +120,7 @@
           loopHorizontal: false,
           resize: false,
           disableKeyboard: true,
+          touch: false,
           afterRender: function() {
             $("#subsidebar li[data-slide-target=slide1]").addClass("current");
             $(".controlArrow").hide();
@@ -154,7 +160,27 @@
             $(".section.active").find(".controlArrow.next").trigger("click");
           }
         });
-      })
+      
+        // temp
+        var $sidebarHeight = $window.height() - $("#navigation").height() + 2;
+        $("#sidebar").css("height",$sidebarHeight);
+        $("#subsidebar").css("height",$sidebarHeight);
+      });
+      
+      $(window).resize(function(){
+        var $sidebar = $("#sidebar");
+        var $subsidebar = $("#subsidebar");
+        var $window = $(window);
+        var $sidebarHeight = $window.height() - $("#navigation").height() + 2;
+        console.info($sidebarHeight);
+        $("#sidebar, #subsidebar").css("height",$sidebarHeight);
+        $("#subsidebar, #subsidebar").css("height",$sidebarHeight);
+        if ($("#subsidebar").hasScrollBar()) {
+          $("#subsidebar").css("width","70px");
+        } else {
+          $("#subsidebar").css("width","60px");
+        }
+      });
     </script>
   </head>
   <body>
@@ -213,6 +239,86 @@
     <div id='subsidebar'>
       <ul class='list'>
         <!-- as seções são adicionadas aqui automaticamente via javascript -->
+        <li>
+          <a href='#'>
+            <span class='icon-audio'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-print'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-audio'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-print'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-audio'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-print'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-audio'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-print'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-audio'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-print'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-audio'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-print'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-audio'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-print'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-audio'></span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <span class='icon-print'></span>
+          </a>
+        </li>
       </ul>
     </div>
     <div id='sidebar'>
@@ -237,6 +343,42 @@
         </li>
         <li>
           <a href='#'>Tópico 04</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 05</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 06</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 07</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 08</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 09</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 10</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 04</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 02</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 03</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 05</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 06</a>
+        </li>
+        <li>
+          <a href='#'>Tópico 07</a>
         </li>
       </ul>
     </div>
