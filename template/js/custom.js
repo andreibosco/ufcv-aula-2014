@@ -1,7 +1,9 @@
 (function($) {
+  // verifica se o elemento possui barra de rolagem
   $.fn.hasScrollBar = function() {
       return this.get(0).scrollHeight > this.innerHeight();
   };
+  // retorna a largura do elemento mesmo que esteja oculto
   $.fn.elementRealWidth = function () {
     var $clone = this.clone()
         .css("visibility","hidden")
@@ -12,14 +14,17 @@
   };
 })(jQuery);
 
-function sidebarAdjustWidth(element,width,direction) {
-  // redimensiona se o elemento possuir barra de rolagem e não for mobile (pois nesse caso a barra de rolagem é um overlay)
+// redimensiona se o elemento possuir barra de rolagem e não for mobile (pois nesse caso a barra de rolagem é um overlay)
+// element: objeto
+// width: largura da barra
+// side: lado da barra
+function sidebarAdjustWidth(element,width,side) {
   if (element.hasScrollBar() && /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) === false) {
     var newWidth = width + 10;
     element.css("width",newWidth);
-    if (direction === "right") {
+    if (side === "right") {
       element.css("right",-newWidth);
-    } else if (direction === "left") {
+    } else if (side === "left") {
       element.css("left",-newWidth);
     }
            
@@ -28,6 +33,7 @@ function sidebarAdjustWidth(element,width,direction) {
   }
 }
 
+// atualiza a informação do slide atual e da quantidade total de slides
 function slideNumbers(index,total) {
   var $slideCurrent = $("#submenu .slide-current");
   var $slideTotal = $("#submenu .slide-total");
@@ -36,6 +42,9 @@ function slideNumbers(index,total) {
   $slideTotal.append(" / "+total);
 }
 
+// exibe/oculta sidebars
+// element: objeto
+// side: lado da barra
 function sidebarSlide(element,side) {
   var elementOffset = element.offset();
   if (side === "left" && elementOffset.left < 0) {
