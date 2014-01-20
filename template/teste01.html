@@ -40,6 +40,14 @@
         } 
       }
       
+      function slideNumbers(index,total) {
+        var $slideCurrent = $("#submenu .slide-current");
+        var $slideTotal = $("#submenu .slide-total");
+        $slideCurrent.add($slideTotal).empty();
+        $slideCurrent.append(index);
+        $slideTotal.append(" / "+total);
+      }
+      
       $(document).ready(function(){
         // variáveis gerais
         var $window = $(window);
@@ -148,12 +156,15 @@
             $("#navigation .previous").addClass('disabled');
           },
           afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {
+            // variáveis
+            var slidesTotal = $(".slide").size();
+            var lastSlide = "slide"+slidesTotal;
+            // atualizando número do slide atual na barra de navegação
+            slideNumbers(slideIndex+1,slidesTotal);
             // habilitando classe current apenas para o slide sendo exibido
             $("#subsidebar li").removeClass("current");
             $("#subsidebar li[data-slide-target="+slideAnchor+"]").addClass("current");
             // adicionando classe disable nas setas de navegação ao chegar no início ou fim
-            var slidesTotal = $(".slide").size();
-            var lastSlide = "slide"+slidesTotal;
             if (slideIndex === 0) {
               $("#navigation .previous").addClass('disabled');
             }
