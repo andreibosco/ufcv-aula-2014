@@ -44,25 +44,32 @@ function slideNumbers(index,total) {
 
 // exibe/oculta sidebars
 // element: objeto
-// side: lado da barra
-function sidebarSlide(element,side) {
+function sidebarSlide(element) {
   var elementOffset = element.offset();
-  if (side === "left" && elementOffset.left < 0) {
+  if (element.data("side") === "left" && elementOffset.left < 0) {
     element.animate({
       left: "0px"
     }, 300);
-  } else if (side === "right" && elementOffset.left === $(window).width()) {
+    element.data("open",true);
+    $(".slide.active").addClass("overlayed");
+  } else if (element.data("side") === "right" && elementOffset.left === $(window).width()) {
     element.animate({
       right: "0px"
     }, 300);
-  } else if (side === "right") {
+    element.data("open",true);
+    $(".slide.active").addClass("overlayed");
+  } else if (element.data("side") === "right") {
     element.animate({
       right: "-"+element.width()
     }, 300);
+    element.data("open",false);
+    $(".slide.active").removeClass("overlayed");
   } else {
     element.animate({
       left: "-"+element.width()
     }, 300);
+    element.data("open",false);
+    $(".slide.active").removeClass("overlayed");
   }
 }
 
@@ -82,6 +89,16 @@ $(document).ready(function(){
   $("#submenu a").click(function(event){
     event.preventDefault();
     sidebarSlide($subsidebar,"right");
+  });
+
+  // evento ao clicar sobre o conteúdo quando algum sidebar estiver aberto
+  $(document).on("click", ".overlayed", function(){
+    $(this).removeClass("overlayed");
+    $(".sidebar").each(function(){
+      if ($(this).data("open")) {
+        sidebarSlide($(this),$(this).data("side"));
+      }
+    });
   });
 
   // botões de seções na barra de navegação e anchor dos slides

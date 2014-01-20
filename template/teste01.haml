@@ -49,7 +49,7 @@
             %span.slide-current 1
             %span.slide-total / 12
             %span.icon-arrow-small-up
-    #subsidebar
+    #subsidebar.sidebar{:data => {:side => 'right'}}
       %ul.list
         / as seções são adicionadas aqui automaticamente via javascript
         %li
@@ -100,7 +100,7 @@
         %li 
           %a{:href => '#'}
             %span.icon-print
-    #sidebar
+    #sidebar.sidebar{:data => {:side => 'left'}}
       .info
         .name
           %h2 Itamaraty: Atendimento ao Cidadão
