@@ -127,7 +127,7 @@
       position: relative;
       text-align: center; }
       #toolbar #navigation #submenu a {
-        padding: 5px 10px; }
+        padding: 10px 10px 0 10px; }
       #toolbar #navigation #submenu .slide-current {
         font-weight: bold;
         font-size: 1.0em; }
@@ -136,8 +136,10 @@
         font-size: 0.8em; }
       #toolbar #navigation #submenu .icon-arrow-small-up {
         position: absolute;
-        top: 2px;
-        left: 20px; }
+        top: 5px;
+        left: 0;
+        width: 100%;
+        text-align: center; }
   #toolbar .font.small span {
     font-size: 0.9em; }
   #toolbar .font.medium span {
