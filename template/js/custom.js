@@ -1,9 +1,9 @@
 (function($) {
   $.fn.hasScrollBar = function() {
       return this.get(0).scrollHeight > this.innerHeight();
-  }
+  };
   $.fn.elementRealWidth = function () {
-    $clone = this.clone()
+    var $clone = this.clone()
         .css("visibility","hidden")
         .appendTo($('body'));
     var $width = $clone.outerWidth();
@@ -12,14 +12,19 @@
   };
 })(jQuery);
 
-function sidebarAdjustWidth(element,width) {
+function sidebarAdjustWidth(element,width,direction) {
   if (element.hasScrollBar()) {
     var newWidth = width + 10;
-    element.css("width",newWidth)
-           .css("right",-newWidth);
+    element.css("width",newWidth);
+    if (direction === "right") {
+      element.css("right",-newWidth);
+    } else if (direction === "left") {
+      element.css("left",-newWidth);
+    }
+           
   } else {
     element.css("width",width);
-  } 
+  }
 }
 
 function slideNumbers(index,total) {
@@ -63,7 +68,7 @@ $(document).ready(function(){
         right: "-"+$subsidebar.width()
       }, 300);
     }
-  })
+  });
 
   // botões de seções na barra de navegação e anchor dos slides
   $("#main .slide").each(function(index){
@@ -72,16 +77,16 @@ $(document).ready(function(){
     // gerando anchor dos slides
     $(this).attr("data-anchor","slide"+index);
     // obter o tipo de seção
-    $sectionType = $(this).data("section-type");
+    var $sectionType = $(this).data("section-type");
     // criar item de navegação correspondente
     $("#subsidebar .list").append("<li data-slide-target='slide"+index+"'><a href='#/slide"+index+"'><span class='icon-"+$sectionType+"'></span></a></li>" );
   });
 
   // tamanho da fonte
-  var fontSmall = 12;
-  var fontMedium = 16;
-  var fontLarge = 20;
-  var fontCookie = "UFCV-Aula-2014"
+  var fontSmall = "12";
+  var fontMedium = "16";
+  var fontLarge = "20";
+  var fontCookie = "UFCV-Aula-2014";
   var fontSize = fontMedium;
   // verifica se o cookie que armazena o tamanho da fonte já existe, do contrario o cria
   if ($.cookie(fontCookie)) {
@@ -125,7 +130,7 @@ $(document).ready(function(){
   $.fn.fullpage({
     verticalCentered: false,
     slidesNavigation: false,
-    scrollOverflow: true,
+    scrollOverflow: false,
     loopBottom: false,
     loopTop: false,
     loopHorizontal: false,
@@ -145,7 +150,6 @@ $(document).ready(function(){
     afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {
       // variáveis
       var slidesTotal = $(".slide").size();
-      var lastSlide = "slide"+slidesTotal;
       // atualizando número do slide atual na barra de navegação
       slideNumbers(slideIndex+1,slidesTotal);
       // habilitando classe current apenas para o slide sendo exibido
@@ -167,23 +171,25 @@ $(document).ready(function(){
   //botões de avançar e voltar e desabilitando ao chegar no primeiro ou último slide
   $("#navigation .previous").click(function(event){
     event.preventDefault();
-    if ($(".section.active .slide.active").data('anchor') != "slide1") {
+    if ($(".section.active .slide.active").data('anchor') !== "slide1") {
       $(".section.active").find(".controlArrow.prev").trigger("click");
     }
-  })
+  });
   $("#navigation .next").click(function(event){
     event.preventDefault();
     var slidesTotal = $(".slide").size();
     var lastSlide = "slide"+slidesTotal;
-    if ($(".section.active .slide.active").data('anchor') != lastSlide) {
+    if ($(".section.active .slide.active").data('anchor') !== lastSlide) {
       $(".section.active").find(".controlArrow.next").trigger("click");
     }
   });
 
   // redimensionando sidebars se necessário (altura e largura)
   var $sidebarHeight = $window.height() - $("#navigation").height() + 2;
+  var $sidebarWidth = $sidebar.elementRealWidth();
   var $subsidebarWidth = $subsidebar.elementRealWidth();
-  sidebarAdjustWidth($subsidebar,$subsidebarWidth);
+  sidebarAdjustWidth($subsidebar,$subsidebarWidth, "right");
+  sidebarAdjustWidth($sidebar,$sidebarWidth, "left");
   $sidebar.add($subsidebar).css("height",$sidebarHeight);
 });
 
@@ -193,6 +199,7 @@ $(window).resize(function(){
   var $subsidebar = $("#subsidebar");
   var $sidebarHeight = $(window).height() - $("#navigation").height() + 2;
   // redimensionando sidebars se necessário (altura e largura)
-  sidebarAdjustWidth($subsidebar,60);
+  sidebarAdjustWidth($subsidebar, 60, "right");
+  sidebarAdjustWidth($sidebar, 185, "left");
   $sidebar.add($subsidebar).css("height",$sidebarHeight);
-}); 
+});

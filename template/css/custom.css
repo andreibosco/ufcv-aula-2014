@@ -37,34 +37,20 @@ Hides the menu at `767px`, but modify this based on your app's needs.
 */
 @media (max-width: 767px) {
   .header {
-    text-align: left; }
+    text-align: left;
+    padding-top: 1.0em; }
 
   /*
   Navigation Push styles.
   */
-  #layout {
-    position: relative;
-    padding-left: 0; }
+  .actions .font, .actions .print {
+    display: none; }
 
-  #layout.active {
-    position: relative;
-    left: 0px; }
+  #navigation {
+    float: none; }
 
-  #layout.active #menu {
-    left: 0px;
-    width: 0px; }
-
-  #menu {
-    left: 0; }
-
-  .menu-link {
-    position: fixed;
-    left: 0;
-    display: block;
-    /* show the button on small screens */ }
-
-  #layout.active .menu-link {
-    left: 0px; } }
+  .slide {
+    padding-bottom: 80px; } }
 #sidebar {
   position: fixed;
   z-index: 1;
@@ -102,14 +88,25 @@ Hides the menu at `767px`, but modify this based on your app's needs.
     padding: 0; }
     #sidebar .topics a {
       display: block;
-      width: 165px;
+      position: relative;
+      width: 155px;
       margin-top: 0.2em;
-      padding: 10px;
-      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px 10px 10px;
       text-decoration: none;
       color: white;
       font-weight: 200;
       font-size: 11pt; }
+      #sidebar .topics a:hover {
+        background-color: rgba(255, 255, 255, 0.15); }
+      #sidebar .topics a:after {
+        font-family: "ufcv";
+        content: "\e609";
+        position: absolute;
+        right: 7px;
+        bottom: 0;
+        height: 68%;
+        vertical-align: middle;
+        font-weight: 100; }
     #sidebar .topics .current {
       background-color: rgba(255, 255, 255, 0.3); }
 
@@ -229,3 +226,9 @@ Hides the menu at `767px`, but modify this based on your app's needs.
 
 #main {
   position: relative; }
+  #main .slide {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; }
+    #main .slide .content {
+      padding-bottom: 1.5em; }

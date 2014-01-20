@@ -48,35 +48,29 @@ body {
 Hides the menu at `767px`, but modify this based on your app's needs.
 */
 @media (max-width: 767px) {
+
   .header {
-    text-align: left; }
+      text-align: left;
+      padding-top: 1.0em;
+  }
 
   /*
   Navigation Push styles.
   */
-  #layout {
-    position: relative;
-    padding-left: 0; }
+  .actions {
+    .font, .print {
+      display: none;
+    }
+  }
+  #navigation {
+    float: none;
+  }
 
-  #layout.active {
-    position: relative;
-    left: 0px; }
+  .slide {
+    padding-bottom: 80px;
+  }
 
-  #layout.active #menu {
-    left: 0px;
-    width: 0px; }
-
-  #menu {
-    left: 0; }
-
-  .menu-link {
-    position: fixed;
-    left: 0;
-    display: block;
-    /* show the button on small screens */ }
-
-  #layout.active .menu-link {
-    left: 0px; } }
+}
 
 
 // BARRA LATERAL DE INFORMAÇÃO E NAVEGAÇÃO ENTRE TÓPICOS (MENU)
@@ -132,14 +126,29 @@ Hides the menu at `767px`, but modify this based on your app's needs.
 
     a {
       display: block;
-      width: $sidebar-width - ($sidebar-item-padding * 2);
+      position: relative;
+      width: $sidebar-width - ($sidebar-item-padding * 3);
       margin-top: 0.2em;
-      padding: $sidebar-item-padding;
-      background-color: rgba(255, 255, 255, 0.1);
+      padding: $sidebar-item-padding $sidebar-item-padding*2 $sidebar-item-padding $sidebar-item-padding;
       text-decoration: none;
       color: white;
       font-weight: 200;
       font-size: 11pt;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+
+      &:after {
+        font-family: "ufcv";
+        content: "\e609";
+        position: absolute;
+        right: 7px;
+        bottom: 0;
+        height: 68%;
+        vertical-align: middle;
+        font-weight: 100;
+      }
     }
 
     .current {
@@ -330,4 +339,14 @@ Hides the menu at `767px`, but modify this based on your app's needs.
 // SEÇÕES
 #main {
   position: relative;
+
+  .slide {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .content {
+      padding-bottom: 1.5em;
+    }
+  }
 }
