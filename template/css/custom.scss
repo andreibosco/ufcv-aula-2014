@@ -154,6 +154,7 @@ $subsidebar-width: $button-width;
 
 #toolbar {
   z-index: 105 !important;
+  height: 50px;
 
   .pure-menu-heading {
     width: 20px;
@@ -189,6 +190,27 @@ $subsidebar-width: $button-width;
           cursor: default;
           color: white;
         }
+      }
+    }
+
+    #submenu {
+      position: relative;
+      text-align: center;
+      a {
+        padding: 5px 10px;
+      }
+      .slide-current {
+        font-weight: bold;
+        font-size: 1.0em;
+      }
+      .slide-total {
+        font-weight: 100;
+        font-size: 0.8em;
+      }
+      .icon-arrow-small-up { // TODO: substituir pela classe do icone correto quando atualizar
+        position: absolute;
+        top: 2px;
+        left: 20px;
       }
     }
   }

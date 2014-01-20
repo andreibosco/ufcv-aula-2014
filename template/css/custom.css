@@ -100,7 +100,8 @@
   height: auto; }
 
 #toolbar {
-  z-index: 105 !important; }
+  z-index: 105 !important;
+  height: 50px; }
   #toolbar .pure-menu-heading {
     width: 20px; }
     #toolbar .pure-menu-heading span {
@@ -122,6 +123,21 @@
           background-color: transparent;
           cursor: default;
           color: white; }
+    #toolbar #navigation #submenu {
+      position: relative;
+      text-align: center; }
+      #toolbar #navigation #submenu a {
+        padding: 5px 10px; }
+      #toolbar #navigation #submenu .slide-current {
+        font-weight: bold;
+        font-size: 1.0em; }
+      #toolbar #navigation #submenu .slide-total {
+        font-weight: 100;
+        font-size: 0.8em; }
+      #toolbar #navigation #submenu .icon-arrow-small-up {
+        position: absolute;
+        top: 2px;
+        left: 20px; }
   #toolbar .font.small span {
     font-size: 0.9em; }
   #toolbar .font.medium span {
