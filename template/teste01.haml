@@ -152,9 +152,14 @@
           disableKeyboard: true,
           touch: false,
           afterRender: function() {
+            // indicando o slide atual
             $("#subsidebar li[data-slide-target=slide1]").addClass("current");
             $(".controlArrow").hide();
+            // desabilitando botão de navegação voltar
             $("#navigation .previous").addClass('disabled');
+            // inicializando contador de slides
+            var slidesTotal = $(".slide").size();
+            slideNumbers("1",slidesTotal);
           },
           afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {
             // variáveis
