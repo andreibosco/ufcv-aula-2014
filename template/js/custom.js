@@ -36,6 +36,27 @@ function slideNumbers(index,total) {
   $slideTotal.append(" / "+total);
 }
 
+function sidebarSlide(element,side) {
+  var elementOffset = element.offset();
+  if (side === "left" && elementOffset.left < 0) {
+    element.animate({
+      left: "0px"
+    }, 300);
+  } else if (side === "right" && elementOffset.left === $(window).width()) {
+    element.animate({
+      right: "0px"
+    }, 300);
+  } else if (side === "right") {
+    element.animate({
+      right: "-"+element.width()
+    }, 300);
+  } else {
+    element.animate({
+      left: "-"+element.width()
+    }, 300);
+  }
+}
+
 $(document).ready(function(){
   // variáveis gerais
   var $window = $(window);
@@ -43,32 +64,15 @@ $(document).ready(function(){
   var $subsidebar = $("#subsidebar");
 
   // sidebar (menu)
-  $(".pure-menu-heading").click(function(){
-    var $sidebarOffset = $sidebar.offset();
-    if ($sidebarOffset.left < 0) {
-      $sidebar.animate({
-        left: "0px"
-      }, 300);
-    } else {
-      $sidebar.animate({
-        left: "-"+$sidebar.width()
-      }, 300);
-    }
+  $(".pure-menu-heading").click(function(event){
+    event.preventDefault();
+    sidebarSlide($sidebar,"left");
   });
 
   // subsidebar (slides)
   $("#submenu a").click(function(event){
     event.preventDefault();
-    var $subsidebarOffset = $subsidebar.offset();
-    if ($subsidebarOffset.left === $window.width()) {
-      $subsidebar.animate({
-        right: "0px"
-      }, 300);
-    } else {
-      $subsidebar.animate({
-        right: "-"+$subsidebar.width()
-      }, 300);
-    }
+    sidebarSlide($subsidebar,"right");
   });
 
   // botões de seções na barra de navegação e anchor dos slides
