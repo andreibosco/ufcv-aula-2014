@@ -13,7 +13,8 @@
 })(jQuery);
 
 function sidebarAdjustWidth(element,width,direction) {
-  if (element.hasScrollBar()) {
+  // redimensiona se o elemento possuir barra de rolagem e não for mobile (pois nesse caso a barra de rolagem é um overlay)
+  if (element.hasScrollBar() && /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) === false) {
     var newWidth = width + 10;
     element.css("width",newWidth);
     if (direction === "right") {
