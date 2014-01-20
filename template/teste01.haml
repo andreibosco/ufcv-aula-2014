@@ -57,10 +57,12 @@
           }
         })
 
-        // botões de seções na barra de navegação
+        // botões de seções na barra de navegação e anchor dos slides
         $("#main .slide").each(function(index){
           // iniciando index em 1 (necessário para funcionar corretamente com o script fullPage)
           index++;
+          // gerando anchor dos slides
+          $(this).attr("data-anchor","slide"+index);
           // obter o tipo de seção
           $sectionType = $(this).data("section-type");
           // criar item de navegação correspondente
@@ -308,9 +310,9 @@
         %li
           %a{:href => '#'} Tópico 07
     #main.section
-      .slide{:data => {:section_type => 'text', :anchor => 'slide1'}}
+      .slide{:data => {:section_type => 'text'}}
         .header
-          %h1 Atendimento ao Cidadão
+          %h1 Atendimento ao Cidadão b
         .content
           %p
             Felizmente, novos ventos estão soprando, graças especialmente ao surgimento desse novo modelo de gestão pública, em que, cada vez mais, aumenta a preocupação do servidor público em mudar essa imagem, surpreendendo o cidadão ao lhe oferecer um bom atendimento. E é para prestar esse bom atendimento ao cidadão, que são tidas como necessárias certas competências por parte do servidor público no desempenho de suas funções. Tais competências dizem respeito aos seus conhecimentos, suas habilidades e suas atitudes. Resta dizer, ainda, que o desenvolvimento e aplicação de tais competências, serão tanto melhor alcançados se envolvidos em um ambiente, onde reinem a motivação e o trabalho em equipe.
@@ -332,13 +334,13 @@
           %h2.content-subhead 1.1 Conhecimento
           %p
             Como parte integrante da competência profissional, o conhecimento resulta de sua formação acadêmica, da teoria estudada, do processo cognitivo de interpretação das informações adquiridas ao longo do tempo, de forma a se saber o que deve ser feito e compreender as tarefas a serem realizadas. Além da educação formal, as experiências vivenciadas no trabalho, nos treinamentos e a interação com outras pessoas, também são importantes fontes de conhecimento.
-      .slide{:data => {:section_type => 'video', :anchor => 'slide2'}}
+      .slide{:data => {:section_type => 'video'}}
         .header
           %h1 Teste de Seção de Vídeo
         .content
           %p
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
-      .slide{:data => {:section_type => 'write', :anchor => 'slide3'}}
+      .slide{:data => {:section_type => 'write'}}
         .header
           %h1 Teste de Seção de Exercício
         .content

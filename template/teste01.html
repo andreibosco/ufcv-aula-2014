@@ -56,10 +56,12 @@
           }
         })
       
-        // botões de seções na barra de navegação
+        // botões de seções na barra de navegação e anchor dos slides
         $("#main .slide").each(function(index){
           // iniciando index em 1 (necessário para funcionar corretamente com o script fullPage)
           index++;
+          // gerando anchor dos slides
+          $(this).attr("data-anchor","slide"+index);
           // obter o tipo de seção
           $sectionType = $(this).data("section-type");
           // criar item de navegação correspondente
@@ -383,9 +385,9 @@
       </ul>
     </div>
     <div class='section' id='main'>
-      <div class='slide' data-anchor='slide1' data-section-type='text'>
+      <div class='slide' data-section-type='text'>
         <div class='header'>
-          <h1>Atendimento ao Cidadão</h1>
+          <h1>Atendimento ao Cidadão b</h1>
         </div>
         <div class='content'>
           <p>
@@ -418,7 +420,7 @@
           </p>
         </div>
       </div>
-      <div class='slide' data-anchor='slide2' data-section-type='video'>
+      <div class='slide' data-section-type='video'>
         <div class='header'>
           <h1>Teste de Seção de Vídeo</h1>
         </div>
@@ -428,7 +430,7 @@
           </p>
         </div>
       </div>
-      <div class='slide' data-anchor='slide3' data-section-type='write'>
+      <div class='slide' data-section-type='write'>
         <div class='header'>
           <h1>Teste de Seção de Exercício</h1>
         </div>
