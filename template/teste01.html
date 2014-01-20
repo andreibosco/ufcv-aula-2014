@@ -20,12 +20,31 @@
           $.fn.hasScrollBar = function() {
               return this.get(0).scrollHeight > this.innerHeight();
           }
+          $.fn.elementRealWidth = function () {
+            $clone = this.clone()
+                .css("visibility","hidden")
+                .appendTo($('body'));
+            var $width = $clone.outerWidth();
+            $clone.remove();
+            return $width;
+          };
       })(jQuery);
+      
+      function sidebarAdjustWidth(element,width) {
+        if (element.hasScrollBar()) {
+          var newWidth = width + 10;
+          element.css("width",newWidth)
+                 .css("right",-newWidth);
+        } else {
+          element.css("width",width);
+        } 
+      }
+      
       $(document).ready(function(){
         // variáveis gerais
+        var $window = $(window);
         var $sidebar = $("#sidebar");
         var $subsidebar = $("#subsidebar");
-        var $window = $(window);
       
         // sidebar (menu)
         $(".pure-menu-heading").click(function(){
@@ -45,7 +64,7 @@
         $("#submenu a").click(function(event){
           event.preventDefault();
           var $subsidebarOffset = $subsidebar.offset();
-          if ($subsidebarOffset.left == $window.width()) {
+          if ($subsidebarOffset.left === $window.width()) {
             $subsidebar.animate({
               right: "0px"
             }, 300);
@@ -80,10 +99,10 @@
           // define o tamanho inicial da fonte da página
           $("#main").css("font-size", fontSize + "px");
           // adiciona classe indicando qual o tamanho atual da fonte 
-          if (fontSize == fontSmall) {
+          if (fontSize === fontSmall) {
             $(".font.small").addClass("current");
           }
-          else if (fontSize == fontMedium) {
+          else if (fontSize === fontMedium) {
             $(".font.medium").addClass("current");
           }
           else {
@@ -135,10 +154,10 @@
             // adicionando classe disable nas setas de navegação ao chegar no início ou fim
             var slidesTotal = $(".slide").size();
             var lastSlide = "slide"+slidesTotal;
-            if (slideIndex == 0) {
+            if (slideIndex === 0) {
               $("#navigation .previous").addClass('disabled');
             }
-            else if (slideIndex == slidesTotal-1) {
+            else if (slideIndex === slidesTotal-1) {
               $("#navigation .next").addClass('disabled');
             }
             else {
@@ -163,25 +182,21 @@
           }
         });
       
-        // temp
+        // redimensionando sidebars se necessário (altura e largura)
         var $sidebarHeight = $window.height() - $("#navigation").height() + 2;
-        $("#sidebar").css("height",$sidebarHeight);
-        $("#subsidebar").css("height",$sidebarHeight);
+        var $subsidebarWidth = $subsidebar.elementRealWidth();
+        sidebarAdjustWidth($subsidebar,$subsidebarWidth);
+        $sidebar.add($subsidebar).css("height",$sidebarHeight);
       });
       
       $(window).resize(function(){
+        // variáveis
         var $sidebar = $("#sidebar");
         var $subsidebar = $("#subsidebar");
-        var $window = $(window);
-        var $sidebarHeight = $window.height() - $("#navigation").height() + 2;
-        console.info($sidebarHeight);
-        $("#sidebar, #subsidebar").css("height",$sidebarHeight);
-        $("#subsidebar, #subsidebar").css("height",$sidebarHeight);
-        if ($("#subsidebar").hasScrollBar()) {
-          $("#subsidebar").css("width","70px");
-        } else {
-          $("#subsidebar").css("width","60px");
-        }
+        var $sidebarHeight = $(window).height() - $("#navigation").height() + 2;
+        // redimensionando sidebars se necessário (altura e largura)
+        sidebarAdjustWidth($subsidebar,60);
+        $sidebar.add($subsidebar).css("height",$sidebarHeight);
       });
     </script>
   </head>
