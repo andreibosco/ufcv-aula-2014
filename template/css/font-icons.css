@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'ufcv';
-	src:url('../fonts/ufcv.eot');
-	src:url('../fonts/ufcv.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/ufcv.woff') format('woff'),
-		url('../fonts/ufcv.ttf') format('truetype'),
-		url('../fonts/ufcv.svg#ufcv') format('svg');
+	src:url('fonts/ufcv.eot');
+	src:url('fonts/ufcv.eot?#iefix') format('embedded-opentype'),
+		url('fonts/ufcv.woff') format('woff'),
+		url('fonts/ufcv.ttf') format('truetype'),
+		url('fonts/ufcv.svg#ufcv') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

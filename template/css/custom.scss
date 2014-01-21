@@ -350,3 +350,17 @@ Hides the menu at `767px`, but modify this based on your app's needs.
     }
   }
 }
+
+// VIDEO
+.video-js {
+  margin-bottom: 1.5em;
+}
+.vjs-poster {
+  background-color: white;
+}
+
+// HACKS
+// ocultando setas de navegação do fullPage
+.controlArrow {
+  display: none !important;
+}
