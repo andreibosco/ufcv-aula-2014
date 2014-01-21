@@ -17,8 +17,6 @@
     %script{:src => 'js/jquery.fullPage.js'}
     %script{:src => 'js/custom.js'}
     %script{:src => 'js/video.js'}
-    :javascript
-      videojs.options.flash.swf = "./swf/video-js.swf"
 
   %body
     .pure-menu.pure-menu-open.pure-menu-fixed.pure-menu-horizontal#toolbar
@@ -178,7 +176,7 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
           .pure-g-r
             .pure-u-1
-              %video.video-js.vjs-default-skin.vjs-big-play-centered{:controls => true, :preload => "auto", :width => '100%', :poster => 'http://video-js.zencoder.com/oceans-clip.png', :data => {:setup => '{"controls":true, "autoplay":false, "preload":"auto"}'}}
+              %video#video1.video-js.vjs-default-skin.vjs-big-play-centered{:controls => true, :preload => "auto", :poster => 'http://video-js.zencoder.com/oceans-clip.png', :data => {:setup => '{"controls":true, "autoplay":false, "preload":"auto"}'}}
                 %source{:src => 'http://video-js.zencoder.com/oceans-clip.mp4', :type => 'video/mp4'}
                 %source{:src => 'http://video-js.zencoder.com/oceans-clip.webm', :type => 'video/webm'}
                 %source{:src => 'http://video-js.zencoder.com/oceans-clip.ogv', :type => 'video/ogg'}
@@ -190,3 +188,19 @@
         .content
           %p
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
+    :javascript
+      _V_("video1").ready(function(){
+        console.info(this);
+        var myPlayer = $(this);
+        var aspectRatio = 9/16;
+
+        function resizeVideoJS(){
+          //var width = $(this).parent().parent().width();
+          var width = $(".content").width();
+          console.info(width);
+          myPlayer.width(width).height(width * aspectRatio);
+        }
+
+        resizeVideoJS();
+        window.onresize = resizeVideoJS;
+      });

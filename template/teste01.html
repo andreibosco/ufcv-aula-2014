@@ -17,9 +17,6 @@
     <script src='js/jquery.fullPage.js'></script>
     <script src='js/custom.js'></script>
     <script src='js/video.js'></script>
-    <script>
-      videojs.options.flash.swf = "./swf/video-js.swf"
-    </script>
   </head>
   <body>
     <div class='pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal' id='toolbar'>
@@ -267,7 +264,7 @@
           </p>
           <div class='pure-g-r'>
             <div class='pure-u-1'>
-              <video class='video-js vjs-default-skin vjs-big-play-centered' controls data-setup='{"controls":true, "autoplay":false, "preload":"auto"}' poster='http://video-js.zencoder.com/oceans-clip.png' preload='auto' width='100%'>
+              <video class='video-js vjs-default-skin vjs-big-play-centered' controls data-setup='{"controls":true, "autoplay":false, "preload":"auto"}' id='video1' poster='http://video-js.zencoder.com/oceans-clip.png' preload='auto'>
                 <source src='http://video-js.zencoder.com/oceans-clip.mp4' type='video/mp4'></source>
                 <source src='http://video-js.zencoder.com/oceans-clip.webm' type='video/webm'></source>
                 <source src='http://video-js.zencoder.com/oceans-clip.ogv' type='video/ogg'></source>
@@ -289,5 +286,22 @@
         </div>
       </div>
     </div>
+    <script>
+      _V_("video1").ready(function(){
+        console.info(this);
+        var myPlayer = $(this);
+        var aspectRatio = 9/16;
+      
+        function resizeVideoJS(){
+          //var width = $(this).parent().parent().width();
+          var width = $(".content").width();
+          console.info(width);
+          myPlayer.width(width).height(width * aspectRatio);
+        }
+      
+        resizeVideoJS();
+        window.onresize = resizeVideoJS;
+      });
+    </script>
   </body>
 </html>

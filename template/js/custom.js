@@ -222,6 +222,21 @@ $(document).ready(function(){
   sidebarAdjustWidth($subsidebar,$subsidebarWidth, "right");
   sidebarAdjustWidth($sidebar,$sidebarWidth, "left");
   $sidebar.add($subsidebar).css("height",$sidebarHeight);
+
+  // video-js
+  // variáveis
+  var aspectRatio = 9/16;
+  // função para redimensionar o vídeo de acordo com aspect ratio
+  function resizeVideoJS(element){
+    //var width = $(this).parent().parent().width();
+    var width = $(".content").width();
+    element.width(width).height(width * aspectRatio);
+  }
+  videojs.options.flash.swf = "../swf/video-js.swf";
+  // redimensionar video
+  $(".video-js").each(function(){
+    resizeVideoJS($(this));
+  });
 });
 
 $(window).resize(function(){
@@ -233,4 +248,9 @@ $(window).resize(function(){
   sidebarAdjustWidth($subsidebar, 60, "right");
   sidebarAdjustWidth($sidebar, 185, "left");
   $sidebar.add($subsidebar).css("height",$sidebarHeight);
+
+  // redimensionar vídeo
+  $(".video-js").each(function(){
+    resizeVideoJS($(this));
+  })
 });
