@@ -1,0 +1,206 @@
+!!! 5
+%html{:lang => 'pt-BR'}
+  %head
+    %meta{'charset' => 'utf-8'}
+    %meta{'name' => 'viewport', :content => 'width=device-width, initial-scale=1.0'}
+    %meta{'name' => 'description', :content => 'Layout de Teste'}
+    %title Layout de Teste 2014.1
+    %link{:rel => 'stylesheet', :href => 'bower_components/pure/pure-min.css'}
+    %link{:rel => 'stylesheet', :href => 'css/font-icons.css'}
+    %link{:rel => 'stylesheet', :href => 'css/jquery.fullPage.css'}
+    %link{:rel => 'stylesheet', :href => 'css/custom.css'}
+    %link{:rel => 'stylesheet', :href => 'css/video-js.min.css'}
+    %script{:src => 'js/jquery-1.10.2.min.js'}
+    %script{:src => 'js/jquery-ui.min.js'}
+    %script{:src => 'js/modernizr.custom.61439.js'}
+    %script{:src => 'js/jquery.cookie.js'}
+    %script{:src => 'js/jquery.fullPage.js'}
+    %script{:src => 'js/custom.js'}
+    %script{:src => 'js/video.js'}
+
+  %body
+    .pure-menu.pure-menu-open.pure-menu-fixed.pure-menu-horizontal#toolbar
+      %a.pure-menu-heading{:href => '#'}
+        %span.icon-menu
+      %ul.actions
+        %li.audio
+          %a{:href => '#'}
+            %span.icon-audio
+        %li.print
+          %a{:href => '#'}
+            %span.icon-print
+        %li.font.small
+          %a{:href => '#'}
+            %span.icon-text-size
+        %li.font.medium
+          %a{:href => '#'}
+            %span.icon-text-size
+        %li.font.large
+          %a{:href => '#'}
+            %span.icon-text-size
+      / TODO: renomear #navigation já que os botões de seções não ficam mais aqui
+      %ul#navigation
+        / as seções são adicionadas aqui automaticamente via javascript
+        %li.previous 
+          %a{:href => '#'}
+            %span.icon-arrow-left
+        %li.next
+          %a{:href => '#'}
+            %span.icon-arrow-right
+        %li#submenu
+          %a{:href => '#'}
+            %span.slide-current 1
+            %span.slide-total / 12
+            %span.icon-arrow-small-up
+    #subsidebar.sidebar{:data => {:side => 'right'}}
+      %ul.list
+        / as seções são adicionadas aqui automaticamente via javascript
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+        %li
+          %a{:href => '#'}
+            %span.icon-audio
+        %li 
+          %a{:href => '#'}
+            %span.icon-print
+    #sidebar.sidebar{:data => {:side => 'left'}}
+      .info
+        .name
+          %h2 Itamaraty: Atendimento ao Cidadão
+        %ul.authors
+          %li Prof. Nidia Barone
+          %li Prof. Sicrano Beltrano
+      %ul.topics
+        %li
+          %a.current{:href => '#'} Competências Essenciais do Servidor Público
+        %li
+          %a{:href => '#'} Tópico 02 asdasdasda
+        %li
+          %a{:href => '#'} Tópico 03
+        %li
+          %a{:href => '#'} Tópico 04
+        %li
+          %a{:href => '#'} Tópico 05
+        %li
+          %a{:href => '#'} Tópico 06
+        %li
+          %a{:href => '#'} Tópico 07
+        %li
+          %a{:href => '#'} Tópico 08
+        %li
+          %a{:href => '#'} Tópico 09
+        %li
+          %a{:href => '#'} Tópico 10
+        %li
+          %a{:href => '#'} Tópico 04
+        %li
+          %a{:href => '#'} Tópico 02
+        %li
+          %a{:href => '#'} Tópico 03
+        %li
+          %a{:href => '#'} Tópico 05
+        %li
+          %a{:href => '#'} Tópico 06
+        %li
+          %a{:href => '#'} Tópico 07
+    #main.section
+      .slide{:data => {:section_type => 'text'}}
+        .header
+          %h1 Atendimento ao Cidadão b
+        .content
+          %p
+            Felizmente, novos ventos estão soprando, graças especialmente ao surgimento desse novo modelo de gestão pública, em que, cada vez mais, aumenta a preocupação do servidor público em mudar essa imagem, surpreendendo o cidadão ao lhe oferecer um bom atendimento. E é para prestar esse bom atendimento ao cidadão, que são tidas como necessárias certas competências por parte do servidor público no desempenho de suas funções. Tais competências dizem respeito aos seus conhecimentos, suas habilidades e suas atitudes. Resta dizer, ainda, que o desenvolvimento e aplicação de tais competências, serão tanto melhor alcançados se envolvidos em um ambiente, onde reinem a motivação e o trabalho em equipe.
+          %p
+            Felizmente, novos ventos estão soprando, graças especialmente ao surgimento desse novo modelo de gestão pública, em que, cada vez mais, aumenta a preocupação do servidor público em mudar essa imagem, surpreendendo o cidadão ao lhe oferecer um bom atendimento. E é para prestar esse bom atendimento ao cidadão, que são tidas como necessárias certas competências por parte do servidor público no desempenho de suas funções. Tais competências dizem respeito aos seus conhecimentos, suas habilidades e suas atitudes. Resta dizer, ainda, que o desenvolvimento e aplicação de tais competências, serão tanto melhor alcançados se envolvidos em um ambiente, onde reinem a motivação e o trabalho em equipe.
+          .pure-g-r
+            .pure-u-1-4
+              %img{:src => 'imgs/01.gif'}
+              %a{:href => 'http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg', :target => 'blank'} Fonte
+            .pure-u-1-4
+              %img{:src => 'imgs/02.gif'}
+              %a{:href => 'http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg', :target => 'blank'} Fonte
+            .pure-u-1-4
+              %img{:src => 'imgs/03.gif'}
+              %a{:href => 'http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg', :target => 'blank'} Fonte
+            .pure-u-1-4
+              %img{:src => 'imgs/01.gif'}
+              %a{:href => 'http://www.portaldoservidor.ba.gov.br/sites/default/files/Atendimento_Suprev.jpg', :target => 'blank'} Fonte
+          %h2.content-subhead 1.1 Conhecimento
+          %p
+            Como parte integrante da competência profissional, o conhecimento resulta de sua formação acadêmica, da teoria estudada, do processo cognitivo de interpretação das informações adquiridas ao longo do tempo, de forma a se saber o que deve ser feito e compreender as tarefas a serem realizadas. Além da educação formal, as experiências vivenciadas no trabalho, nos treinamentos e a interação com outras pessoas, também são importantes fontes de conhecimento.
+      .slide{:data => {:section_type => 'video'}}
+        .header
+          %h1 Teste de Seção de Vídeo
+        .content
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
+          .pure-g-r
+            .pure-u-1
+              %video#video1.video-js.vjs-default-skin.vjs-big-play-centered{:controls => true, :preload => "auto", :poster => 'http://video-js.zencoder.com/oceans-clip.png', :data => {:setup => '{"controls":true, "autoplay":false, "preload":"auto"}'}}
+                %source{:src => 'http://video-js.zencoder.com/oceans-clip.mp4', :type => 'video/mp4'}
+                %source{:src => 'http://video-js.zencoder.com/oceans-clip.webm', :type => 'video/webm'}
+                %source{:src => 'http://video-js.zencoder.com/oceans-clip.ogv', :type => 'video/ogg'}
+                %track{:kind => 'subtitles', :src => 'videos/demo.captions.vtt', :srclang => 'en', :label => 'English'}
+                %track{:kind => 'captions', :src => 'videos/demo.captions.vtt', :srclang => 'en', :label => 'English'}
+      .slide{:data => {:section_type => 'write'}}
+        .header
+          %h1 Teste de Seção de Exercício
+        .content
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, doloremque, laborum delectus nemo totam amet quod earum quas ullam accusantium mollitia repudiandae molestias aperiam soluta maxime nostrum minima ducimus perspiciatis.
+    :javascript
+      _V_("video1").ready(function(){
+        console.info(this);
+        var myPlayer = $(this);
+        var aspectRatio = 9/16;
+
+        function resizeVideoJS(){
+          //var width = $(this).parent().parent().width();
+          var width = $(".content").width();
+          console.info(width);
+          myPlayer.width(width).height(width * aspectRatio);
+        }
+
+        resizeVideoJS();
+        window.onresize = resizeVideoJS;
+      });
