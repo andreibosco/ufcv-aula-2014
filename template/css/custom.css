@@ -1,0 +1,240 @@
+body {
+  color: #777; }
+
+.content {
+  margin: 0 auto;
+  padding: 0 2em;
+  max-width: 800px;
+  margin-bottom: 50px;
+  line-height: 1.6em; }
+
+.header {
+  margin: 0;
+  color: #333;
+  text-align: center;
+  padding: 2.5em 2em 0;
+  border-bottom: 1px solid #eee; }
+
+.header h1 {
+  margin: 0.2em 0;
+  font-size: 3em;
+  font-weight: 300; }
+
+.header h2 {
+  font-weight: 300;
+  color: #ccc;
+  padding: 0;
+  margin-top: 0; }
+
+.content-subhead {
+  margin: 50px 0 20px 0;
+  font-weight: 300;
+  color: #888; }
+
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+/*
+Hides the menu at `767px`, but modify this based on your app's needs.
+*/
+@media (max-width: 767px) {
+  .header {
+    text-align: left;
+    padding-top: 1.0em; }
+
+  /*
+  Navigation Push styles.
+  */
+  .actions .font, .actions .print {
+    display: none; }
+
+  #navigation {
+    float: none; }
+
+  .slide {
+    padding-bottom: 80px; } }
+#sidebar {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: -185px;
+  width: 185px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(60, 108, 104, 0.95);
+  font-family: Helvetica, Verdana, sans-serif; }
+  #sidebar .info {
+    color: white; }
+    #sidebar .info h2, #sidebar .info ul {
+      margin: 0; }
+    #sidebar .info .name {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 0.5em 0.8em;
+      font-variant: small-caps;
+      text-align: center; }
+      #sidebar .info .name h2 {
+        font-weight: 200; }
+    #sidebar .info .authors {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 0.5em 0.8em;
+      list-style: none;
+      font-weight: 300;
+      font-size: 11pt; }
+      #sidebar .info .authors li {
+        padding: 0.2em 0; }
+  #sidebar .topics {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    #sidebar .topics a {
+      display: block;
+      position: relative;
+      width: 155px;
+      margin-top: 0.2em;
+      padding: 10px 20px 10px 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: 200;
+      font-size: 11pt; }
+      #sidebar .topics a:hover {
+        background-color: rgba(255, 255, 255, 0.15); }
+      #sidebar .topics a:after {
+        font-family: "ufcv";
+        content: "\e609";
+        position: absolute;
+        right: 7px;
+        bottom: 0;
+        height: 68%;
+        vertical-align: middle;
+        font-weight: 100; }
+    #sidebar .topics .current {
+      background-color: rgba(255, 255, 255, 0.3); }
+
+#subsidebar {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  right: -60px;
+  width: 60px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(0, 84, 77, 0.9); }
+  #subsidebar [class^="icon-"], #subsidebar [class*=" icon-"] {
+    font-size: 1.3em;
+    vertical-align: middle; }
+  #subsidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    #subsidebar ul li a {
+      display: inline-block;
+      padding: 5px 20px 10px 20px;
+      width: 20px;
+      text-decoration: none;
+      color: white;
+      line-height: 2.4em;
+      height: 30px; }
+    #subsidebar ul li a:hover, #subsidebar ul li a:focus {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #00544d; }
+    #subsidebar ul li.current {
+      background-color: white; }
+      #subsidebar ul li.current a {
+        color: #00544d !important; }
+
+.pure-menu.pure-menu-open.pure-menu-fixed {
+  top: auto;
+  bottom: 0;
+  border-bottom-width: 0;
+  background-color: rgba(0, 84, 77, 0.9);
+  height: 3.0em; }
+  .pure-menu.pure-menu-open.pure-menu-fixed li a {
+    color: white;
+    line-height: 2.4em; }
+  .pure-menu.pure-menu-open.pure-menu-fixed > a {
+    color: white;
+    line-height: 2.8em; }
+  .pure-menu.pure-menu-open.pure-menu-fixed a:hover, .pure-menu.pure-menu-open.pure-menu-fixed a:focus {
+    color: #00544d;
+    background-color: rgba(255, 255, 255, 0.8); }
+
+.pure-menu.pure-menu-horizontal > ul {
+  height: auto; }
+
+#toolbar {
+  z-index: 105 !important;
+  height: 50px; }
+  #toolbar .pure-menu-heading {
+    width: 20px; }
+    #toolbar .pure-menu-heading span {
+      margin-left: -4px; }
+  #toolbar li {
+    width: 60px;
+    margin-right: -5px; }
+  #toolbar #navigation {
+    float: right; }
+    #toolbar #navigation li {
+      margin-right: 0px; }
+      #toolbar #navigation li.previous a, #toolbar #navigation li.next a {
+        width: 20px; }
+        #toolbar #navigation li.previous a span, #toolbar #navigation li.next a span {
+          margin-left: -4px; }
+      #toolbar #navigation li.disabled {
+        opacity: 0.5; }
+        #toolbar #navigation li.disabled a:hover, #toolbar #navigation li.disabled a:focus {
+          background-color: transparent;
+          cursor: default;
+          color: white; }
+    #toolbar #navigation #submenu {
+      position: relative;
+      text-align: center; }
+      #toolbar #navigation #submenu a {
+        padding: 10px 10px 0 10px; }
+      #toolbar #navigation #submenu .slide-current {
+        font-weight: bold;
+        font-size: 1.0em; }
+      #toolbar #navigation #submenu .slide-total {
+        font-weight: 100;
+        font-size: 0.8em; }
+      #toolbar #navigation #submenu .icon-arrow-small-up {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        width: 100%;
+        text-align: center; }
+  #toolbar .font.small span {
+    font-size: 0.9em; }
+  #toolbar .font.medium span {
+    font-size: 1.0em; }
+  #toolbar .font.large span {
+    font-size: 1.2em; }
+  #toolbar .font span {
+    vertical-align: text-bottom; }
+  #toolbar .current {
+    background-color: white; }
+    #toolbar .current a {
+      color: #00544d !important; }
+  #toolbar [class^="icon-"], #toolbar [class*=" icon-"] {
+    font-size: 1.3em;
+    vertical-align: middle; }
+  #toolbar .icon-menu {
+    font-size: 2.0em; }
+  #toolbar .icon-arrow-right, #toolbar .icon-arrow-left {
+    font-size: 1.8em; }
+
+#main {
+  position: relative; }
+  #main .slide {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; }
+    #main .slide .content {
+      padding-bottom: 1.5em; }
+
+.video-js {
+  margin-bottom: 1.5em; }
+
+.controlArrow {
+  display: none !important; }
